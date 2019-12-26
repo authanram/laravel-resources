@@ -42,7 +42,7 @@ return [
         ],
     ],
 
-    'theme' => Theme::get(__DIR__ . '/resources/theme.yaml'),
+    'theme' => Theme::get(resource_path('theme.yaml')),
 
     'views' => [
         'extends' => 'welcome',

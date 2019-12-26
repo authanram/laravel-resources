@@ -1,5 +1,5 @@
 {
-    "name": "authanram/laravel-resources",
+    "name": "modules/resources",
     "license": "MIT",
     "require": {
         "php": "^7.4",
