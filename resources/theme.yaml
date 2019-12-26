@@ -37,6 +37,7 @@ index:
     header: bg-gray-100 flex font-medium items-center pt-1 text-base
     row: hover:bg-gray-100 border-t flex items-center
 invokers:
+  invoker: flex justify-center mr-3 w-16
   background: bg-gray-200
   accents:
     danger:

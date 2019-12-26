@@ -2,16 +2,22 @@
 
 namespace Authanram\Resources\Http\Actions\Concerns;
 
+use Authanram\Resources\Entities\Invoker;
+use Illuminate\Support\Collection;
+
 trait HasInvokers
 {
-    protected string $invokers;
+    protected Collection $invokers;
 
-    public function getInvokers(): string
+    /**
+     * @return Collection|Invoker[]
+     */
+    public function getInvokers(): Collection
     {
         return $this->invokers;
     }
 
-    public function setInvokers(string $invokers): self
+    public function setInvokers(Collection $invokers): self
     {
         $this->invokers = $invokers;
 

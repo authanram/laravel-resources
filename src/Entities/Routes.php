@@ -85,7 +85,7 @@ class Routes extends Fluent
 
     //
 
-    private function makeRoute(string $action, int $id = null): string
+    public function makeRoute(string $action, int $id = null): string
     {
         if ($id) {
 

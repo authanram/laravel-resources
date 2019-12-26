@@ -15,6 +15,12 @@
 
         @endforeach
 
+        <div class="{{ $action->theme('invokers.invoker') }}">
+
+            @include ('authanram-resources::actions.invoker')
+
+        </div>
+
     </li>
 
 @endforeach
