@@ -6,185 +6,56 @@ use Authanram\Resources\Theme;
 
 class Invoker
 {
-    protected ?bool $valueComparator;
+    public ?bool $valueComparator = null;
 
-    protected ?int $sortOrder;
+    public ?int $sortOrder = null;
 
-    protected ?string $bgColor;
+    public ?string $bgColor = null;
 
-    protected ?string $color;
+    public ?string $color = null;
 
-    protected ?string $icon;
+    public ?string $icon = null;
 
-    protected ?string $permission;
+    public ?string $permission = null;
 
-    protected ?string $separator;
+    public ?string $separator = null;
 
-    protected ?string $valueColumn;
+    public ?string $valueColumn = null;
 
-    protected string $key;
+    public ?string $key = null;
 
-    protected string $label;
+    public ?string $label = null;
 
-    protected string $routeKey;
+    public ?string $routeKey = null;
 
     public static function make(array $attributes): self
     {
-        $instance = new self;
-
-        $instance->bgColor = take($attributes)->get('bgColor', Theme::getValue('invokers.background'));
-
-        $instance->color = take($attributes)->get('color', Theme::getValue('accent'));
-
-        $instance->icon = take($attributes)->get('icon', Theme::getValue('invokers.icons.default'));
-
-        $instance->key = take($attributes)->get('key');
-
-        $instance->label = take($attributes)->get('label');
-
-        $instance->permission = take($attributes)->get('permission');
-
-        $instance->routeKey = take($attributes)->get('routeKey');
-
-        $instance->separator = take($attributes)->get('separator');
-
-        $instance->sortOrder = take($attributes)->get('sortOrder', 0);
-
-        $instance->valueColumn = take($attributes)->get('valueColumn');
-
-        $instance->valueComparator = take($attributes)->get('valueComparator');
-
-        return $instance;
+        return (new self)->setAttributes($attributes);
     }
 
-    public function getValueComparator(): ?bool
+    public function setAttributes(array $attributes): self
     {
-        return $this->valueComparator;
-    }
+        $this->bgColor = take($attributes)->get('bgColor', $this->bgColor ?? Theme::getValue('invokers.background'));
 
-    public function getSortOrder(): ?int
-    {
-        return $this->sortOrder;
-    }
+        $this->color = take($attributes)->get('color', $this->color ?? Theme::getValue('accent'));
 
-    public function getBgColor(): ?string
-    {
-        return $this->bgColor;
-    }
+        $this->icon = take($attributes)->get('icon', $this->icon ?? Theme::getValue('invokers.icons.default'));
 
-    public function getColor(): ?string
-    {
-        return $this->color;
-    }
+        $this->key = take($attributes)->get('key', $this->key);
 
-    public function getIcon(): ?string
-    {
-        return $this->icon;
-    }
+        $this->label = take($attributes)->get('label', $this->label);
 
-    public function getPermission(): ?string
-    {
-        return $this->permission;
-    }
+        $this->permission = take($attributes)->get('permission', $this->permission);
 
-    public function getSeparator(): ?string
-    {
-        return $this->separator;
-    }
+        $this->routeKey = take($attributes)->get('routeKey', $this->routeKey);
 
-    public function getValueColumn(): ?string
-    {
-        return $this->valueColumn;
-    }
+        $this->separator = take($attributes)->get('separator', $this->separator);
 
-    public function getKey(): string
-    {
-        return $this->key;
-    }
+        $this->sortOrder = take($attributes)->get('sortOrder', $this->sortOrder ?? 0);
 
-    public function getLabel(): string
-    {
-        return $this->label;
-    }
+        $this->valueColumn = take($attributes)->get('valueColumn', $this->valueColumn);
 
-    public function getRouteKey(): string
-    {
-        return $this->routeKey;
-    }
-
-    public function setValueComparator(?bool $valueComparator): Invoker
-    {
-        $this->valueComparator = $valueComparator;
-
-        return $this;
-    }
-
-    public function setSortOrder(?int $sortOrder): Invoker
-    {
-        $this->sortOrder = $sortOrder;
-
-        return $this;
-    }
-
-    public function setBgColor(?string $bgColor): Invoker
-    {
-        $this->bgColor = $bgColor;
-
-        return $this;
-    }
-
-    public function setColor(?string $color): Invoker
-    {
-        $this->color = $color;
-
-        return $this;
-    }
-
-    public function setIcon(?string $icon): Invoker
-    {
-        $this->icon = $icon;
-
-        return $this;
-    }
-
-    public function setPermission(?string $permission): Invoker
-    {
-        $this->permission = $permission;
-
-        return $this;
-    }
-
-    public function setSeparator(?string $separator): Invoker
-    {
-        $this->separator = $separator;
-
-        return $this;
-    }
-
-    public function setValueColumn(?string $valueColumn): Invoker
-    {
-        $this->valueColumn = $valueColumn;
-
-        return $this;
-    }
-
-    public function setKey(string $key): Invoker
-    {
-        $this->key = $key;
-
-        return $this;
-    }
-
-    public function setLabel(string $label): Invoker
-    {
-        $this->label = $label;
-
-        return $this;
-    }
-
-    public function setRouteKey(string $routeKey): Invoker
-    {
-        $this->routeKey = $routeKey;
+        $this->valueComparator = take($attributes)->get('valueComparator', $this->valueComparator);
 
         return $this;
     }
