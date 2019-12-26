@@ -20,17 +20,15 @@ class ServiceProvider extends IlluminateServiceProvider
         $this->app->bind(Contracts\ResourceServiceContract::class, Services\ResourceService::class);
 
         $this->app->singleton(Contracts\RouteServiceContract::class, Services\RouteService::class);
+
+        $this->app->register(RouteServiceProvider::class);
     }
 
     public function boot(): void
     {
-        if (config('authanram-resources')) {
+        $this->loadRoutesFrom(__DIR__.'/../../routes.php');
 
-            $this->loadRoutesFrom(__DIR__.'/../../routes.php');
-
-            $this->loadViewsFrom(__DIR__ . '/../../resources/views', 'authanram-resources');
-
-        }
+        $this->loadViewsFrom(__DIR__ . '/../../resources/views', 'authanram-resources');
 
         if ($this->app->runningInConsole()) {
 
@@ -47,19 +45,6 @@ class ServiceProvider extends IlluminateServiceProvider
             static::getConfigurationFilePath() => config_path('authanram-resources.php'),
 
         ]);
-    }
-
-    public function provides(): array
-    {
-        return [
-
-            Contracts\ReaderServiceContract::class,
-
-            Contracts\ResourceServiceContract::class,
-
-            Contracts\RouteServiceContract::class,
-
-        ];
     }
 
     private static function getConfigurationFilePath(): string
