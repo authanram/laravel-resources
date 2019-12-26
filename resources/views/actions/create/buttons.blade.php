@@ -1,4 +1,4 @@
-@php /** @var \Resources\Http\Actions\EditAction $action */ @endphp
+@php /** @var \Authanram\Resources\Http\Actions\EditAction $action */ @endphp
 
 <button
     class="{{ $action->theme('button.default', 'button.primary') }} mr-2"

@@ -1,11 +1,11 @@
 <?php
 
-namespace Resources\Http\Actions\Concerns;
+namespace Authanram\Resources\Http\Actions\Concerns;
 
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
-use Resources\Http\Actions\Action;
+use Authanram\Resources\Http\Actions\Action;
 
 trait MakesRedirectResponse
 {

@@ -1,8 +1,8 @@
 <?php
 
-namespace Resources\Http\Actions\Concerns;
+namespace Authanram\Resources\Http\Actions\Concerns;
 
-use Resources\Entities\FlashMessage;
+use Authanram\Resources\Entities\FlashMessage;
 
 trait HasFlashMessage
 {

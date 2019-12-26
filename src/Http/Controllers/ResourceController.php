@@ -1,12 +1,12 @@
 <?php
 
-namespace Resources\Http\Controllers;
+namespace Authanram\Resources\Http\Controllers;
 
 use App\Model;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
-use Resources\Http\Actions;
+use Authanram\Resources\Http\Actions;
 
 class ResourceController extends Controller
 {

@@ -1,9 +1,9 @@
 <?php
 
-namespace Resources\Http\Actions\Concerns;
+namespace Authanram\Resources\Http\Actions\Concerns;
 
 use Illuminate\Database\Eloquent\Model;
-use Resources\Entities\Association;
+use Authanram\Resources\Entities\Association;
 
 trait StoresInput
 {

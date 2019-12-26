@@ -1,6 +1,6 @@
 <?php
 
-use Resources\Theme;
+use Authanram\Resources\Theme;
 
 return [
 

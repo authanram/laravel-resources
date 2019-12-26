@@ -1,9 +1,9 @@
 <?php
 
-namespace Resources\Entities\Fields\Input;
+namespace Authanram\Resources\Entities\Fields\Input;
 
 use Illuminate\Support\Collection;
-use Resources\Entities\Fields\BaseField;
+use Authanram\Resources\Entities\Fields\BaseField;
 
 class BelongsToManyEntity extends BaseField
 {

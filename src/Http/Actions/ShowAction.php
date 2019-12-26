@@ -1,8 +1,8 @@
 <?php
 
-namespace Resources\Http\Actions;
+namespace Authanram\Resources\Http\Actions;
 
-use Resources\Entities;
+use Authanram\Resources\Entities;
 
 final class ShowAction extends Action
 {

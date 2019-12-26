@@ -6,8 +6,10 @@ button:
   secondary: bg-gray-500 focus:bg-gray-700 hover:bg-gray-600 border border-gray-500 text-white
   tertiary:
 card: bg-white overflow-hidden mb-4 sm:mb-6 md:mb-8 rounded-lg shadow-md
-container: m-auto md:w-3/4 xl:w-2/3
-content: pt-4 px-4 md:pt-6 md:px-8
+container: null
+content: null
+#container: m-auto md:w-3/4 xl:w-2/3
+#content: pt-4 px-4 md:pt-6 md:px-8
 fields:
   default:
     output: flex-1

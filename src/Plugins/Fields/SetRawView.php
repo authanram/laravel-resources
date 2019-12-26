@@ -1,10 +1,10 @@
 <?php
 
-namespace Resources\Plugins\Fields;
+namespace Authanram\Resources\Plugins\Fields;
 
 use Illuminate\Support\Facades\View;
-use Resources\Contracts\InputOutputPluginContract;
-use Resources\Entities\Fields\BaseField;
+use Authanram\Resources\Contracts\InputOutputPluginContract;
+use Authanram\Resources\Entities\Fields\BaseField;
 
 final class SetRawView implements InputOutputPluginContract
 {

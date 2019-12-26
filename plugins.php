@@ -1,9 +1,9 @@
 <?php
 
-use Resources\Entities\Action;
-use Resources\Entities\InteractionType;
-use Resources\Plugins\Actions;
-use Resources\Plugins\Fields;
+use Authanram\Resources\Entities\Action;
+use Authanram\Resources\Entities\InteractionType;
+use Authanram\Resources\Plugins\Actions;
+use Authanram\Resources\Plugins\Fields;
 
 return [
 

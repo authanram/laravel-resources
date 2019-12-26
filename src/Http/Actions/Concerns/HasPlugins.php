@@ -1,6 +1,6 @@
 <?php
 
-namespace Resources\Http\Actions\Concerns;
+namespace Authanram\Resources\Http\Actions\Concerns;
 
 use Illuminate\Support\Collection;
 
@@ -9,7 +9,7 @@ trait HasPlugins
     protected Collection $plugins;
 
     /**
-     * @return Collection|\Resources\Contracts\ActionPluginContract[]
+     * @return Collection|\Authanram\Resources\Contracts\ActionPluginContract[]
      */
     protected function getPlugins(): Collection
     {

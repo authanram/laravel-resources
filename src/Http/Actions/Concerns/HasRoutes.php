@@ -1,11 +1,11 @@
 <?php
 
-namespace Resources\Http\Actions\Concerns;
+namespace Authanram\Resources\Http\Actions\Concerns;
 
 use Illuminate\Http\Request;
-use Resources\Entities\Routes;
+use Authanram\Resources\Entities\Routes;
 use Illuminate\Support\Str;
-use Resources\Entities;
+use Authanram\Resources\Entities;
 
 trait HasRoutes
 {

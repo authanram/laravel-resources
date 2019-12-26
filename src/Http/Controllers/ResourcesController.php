@@ -1,6 +1,6 @@
 <?php
 
-namespace Resources\Http\Controllers;
+namespace Authanram\Resources\Http\Controllers;
 
 class ResourcesController extends Controller
 {

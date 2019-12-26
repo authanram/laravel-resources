@@ -1,3 +1,3 @@
-@php /** @var \Resources\Entities\Fields\Output\StringEntity $field */ @endphp
+@php /** @var \Authanram\Resources\Entities\Fields\Output\StringEntity $field */ @endphp
 
 {{ $field->getValue() }}

@@ -1,9 +1,9 @@
 <?php
 
-namespace Resources\Contracts;
+namespace Authanram\Resources\Contracts;
 
 use Illuminate\Http\Request;
-use Resources\Http\Actions\Action;
+use Authanram\Resources\Http\Actions\Action;
 
 interface ActionPluginContract
 {

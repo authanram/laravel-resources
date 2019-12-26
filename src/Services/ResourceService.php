@@ -1,11 +1,11 @@
 <?php
 
-namespace Resources\Services;
+namespace Authanram\Resources\Services;
 
 use App\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-use Resources\Contracts\ResourceServiceContract;
+use Authanram\Resources\Contracts\ResourceServiceContract;
 
 class ResourceService implements ResourceServiceContract
 {

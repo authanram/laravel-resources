@@ -1,10 +1,10 @@
 <?php
 
-namespace Resources\Providers;
+namespace Authanram\Resources\Providers;
 
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
-use Resources\Contracts;
-use Resources\Services;
+use Authanram\Resources\Contracts;
+use Authanram\Resources\Services;
 
 class RouteServiceProvider extends ServiceProvider
 {

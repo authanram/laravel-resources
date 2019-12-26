@@ -1,10 +1,10 @@
 <?php
 
-namespace Resources\Plugins\Fields;
+namespace Authanram\Resources\Plugins\Fields;
 
-use Resources\Contracts\InputOutputPluginContract;
-use Resources\Entities\Fields\BaseField;
-use Resources\Theme;
+use Authanram\Resources\Contracts\InputOutputPluginContract;
+use Authanram\Resources\Entities\Fields\BaseField;
+use Authanram\Resources\Theme;
 
 final class SetClassAttribute implements InputOutputPluginContract
 {

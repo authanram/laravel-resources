@@ -1,6 +1,6 @@
 <?php
 
-namespace Resources\Contracts;
+namespace Authanram\Resources\Contracts;
 
 interface ReaderServiceContract
 {

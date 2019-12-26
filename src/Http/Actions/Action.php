@@ -1,12 +1,12 @@
 <?php
 
-namespace Resources\Http\Actions;
+namespace Authanram\Resources\Http\Actions;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Fluent;
 use Illuminate\View\View;
-use Resources\Contracts\ActionPluginContract;
-use Resources\Http\Actions\Concerns;
+use Authanram\Resources\Contracts\ActionPluginContract;
+use Authanram\Resources\Http\Actions\Concerns;
 
 abstract class Action extends Fluent
 {

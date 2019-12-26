@@ -1,9 +1,9 @@
 <?php
 
-namespace Resources\Http\Actions\Concerns;
+namespace Authanram\Resources\Http\Actions\Concerns;
 
 use Illuminate\Support\Collection;
-use Resources\Entities\Fields\BaseField;
+use Authanram\Resources\Entities\Fields\BaseField;
 
 trait HasFields
 {

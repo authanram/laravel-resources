@@ -1,14 +1,14 @@
 <?php
 
-namespace Resources\Services;
+namespace Authanram\Resources\Services;
 
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Fluent;
 use Illuminate\Support\Str;
-use Resources\Contracts\ReaderServiceContract;
-use Resources\Entities\Association;
-use Resources\Yaml;
+use Authanram\Resources\Contracts\ReaderServiceContract;
+use Authanram\Resources\Entities\Association;
+use Authanram\Resources\Yaml;
 use Symfony\Component\Finder\SplFileInfo;
 
 class ReaderService implements ReaderServiceContract

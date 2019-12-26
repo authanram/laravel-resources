@@ -1,6 +1,6 @@
 <?php
 
-namespace Resources\Entities;
+namespace Authanram\Resources\Entities;
 
 use Illuminate\Support\Collection;
 

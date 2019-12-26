@@ -1,8 +1,8 @@
 <?php
 
-namespace Resources\Entities;
+namespace Authanram\Resources\Entities;
 
-use Resources\Theme;
+use Authanram\Resources\Theme;
 
 class Invoker
 {

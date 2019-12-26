@@ -1,16 +1,16 @@
 <?php
 
-namespace Resources\Plugins\Actions;
+namespace Authanram\Resources\Plugins\Actions;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use Illuminate\Support\ViewErrorBag;
-use Resources\Contracts\ActionPluginContract;
-use Resources\Entities;
-use Resources\Entities\Fields\BaseField;
-use Resources\Entities\Fields\Field;
-use Resources\Http\Actions\Action;
+use Authanram\Resources\Contracts\ActionPluginContract;
+use Authanram\Resources\Entities;
+use Authanram\Resources\Entities\Fields\BaseField;
+use Authanram\Resources\Entities\Fields\Field;
+use Authanram\Resources\Http\Actions\Action;
 
 final class SetFields implements ActionPluginContract
 {
@@ -91,7 +91,7 @@ final class SetFields implements ActionPluginContract
 
         $studly = Str::studly($interactionType);
 
-        return "\\Resources\\Entities\\Fields\\$studly";
+        return "\\Authanram\\Resources\\Entities\\Fields\\$studly";
     }
 
     private static function makeFieldError(Request $request, string $attribute): ?string

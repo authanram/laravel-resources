@@ -1,5 +1,5 @@
-@php /** @var \Resources\Entities\Fields\BaseField $field */ @endphp
-@php /** @var \Resources\Http\Actions\Action $action */ @endphp
+@php /** @var \Authanram\Resources\Entities\Fields\BaseField $field */ @endphp
+@php /** @var \Authanram\Resources\Http\Actions\Action $action */ @endphp
 
 <label class="{{ $action->theme('form.label.container') }}">
 

@@ -1,10 +1,11 @@
 <?php
 
-namespace Resources\Console\Commands;
+namespace Authanram\Resources\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\File;
+use Authanram\Resources\Providers\ServiceProvider;
 
 class ResourcesInstall extends Command
 {
@@ -14,7 +15,7 @@ class ResourcesInstall extends Command
 
     public function handle(): void
     {
-        $this->line("\nInstall \"authanram/laravel-resources\"\n");
+        $this->line("\nInstall \"authanram/laravel-Authanram\Resources\"\n");
 
         $this->publishTheme();
 
@@ -44,7 +45,7 @@ class ResourcesInstall extends Command
     {
         Artisan::call('vendor:publish', [
 
-            '--provider' => 'Resources\\Providers\\ServiceProvider',
+            '--provider' => ServiceProvider::class,
 
         ]);
     }

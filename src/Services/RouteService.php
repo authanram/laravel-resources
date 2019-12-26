@@ -1,12 +1,12 @@
 <?php
 
-namespace Resources\Services;
+namespace Authanram\Resources\Services;
 
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Str;
-use Resources\Contracts\RouteServiceContract;
-use Resources\Entities\Action;
+use Authanram\Resources\Contracts\RouteServiceContract;
+use Authanram\Resources\Entities\Action;
 
 class RouteService implements RouteServiceContract
 {

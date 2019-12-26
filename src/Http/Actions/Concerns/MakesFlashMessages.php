@@ -1,10 +1,10 @@
 <?php
 
-namespace Resources\Http\Actions\Concerns;
+namespace Authanram\Resources\Http\Actions\Concerns;
 
 use Illuminate\Http\Request;
-use Resources\Entities\FlashMessage;
-use Resources\Http\Actions\Action;
+use Authanram\Resources\Entities\FlashMessage;
+use Authanram\Resources\Http\Actions\Action;
 
 trait MakesFlashMessages
 {

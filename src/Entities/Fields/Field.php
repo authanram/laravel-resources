@@ -1,6 +1,6 @@
 <?php
 
-namespace Resources\Entities\Fields;
+namespace Authanram\Resources\Entities\Fields;
 
 use App\Model;
 use Illuminate\Support\Fluent;

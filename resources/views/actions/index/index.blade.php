@@ -1,4 +1,4 @@
-@php /** @var \Resources\Http\Actions\IndexAction $action */ @endphp
+@php /** @var \Authanram\Resources\Http\Actions\IndexAction $action */ @endphp
 
 @extends ('authanram-resources::actions.index', [
 

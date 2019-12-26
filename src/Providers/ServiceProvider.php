@@ -1,11 +1,11 @@
 <?php
 
-namespace Resources\Providers;
+namespace Authanram\Resources\Providers;
 
 use Illuminate\Support\ServiceProvider as IlluminateServiceProvider;
-use Resources\Console\Commands\ResourcesInstall;
-use Resources\Contracts;
-use Resources\Services;
+use Authanram\Resources\Console\Commands\ResourcesInstall;
+use Authanram\Resources\Contracts;
+use Authanram\Resources\Services;
 
 class ServiceProvider extends IlluminateServiceProvider
 {

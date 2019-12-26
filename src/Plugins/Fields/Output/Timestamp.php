@@ -1,10 +1,10 @@
 <?php
 
-namespace Resources\Plugins\Fields\Output;
+namespace Authanram\Resources\Plugins\Fields\Output;
 
 use Carbon\Carbon;
-use Resources\Contracts\InputOutputPluginContract;
-use Resources\Entities\Fields\BaseField;
+use Authanram\Resources\Contracts\InputOutputPluginContract;
+use Authanram\Resources\Entities\Fields\BaseField;
 
 final class Timestamp implements InputOutputPluginContract
 {

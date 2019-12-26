@@ -1,9 +1,9 @@
 <?php
 
-namespace Resources\Http\Actions\Concerns;
+namespace Authanram\Resources\Http\Actions\Concerns;
 
-use Resources\Entities\Invoker;
-use Resources\Theme;
+use Authanram\Resources\Entities\Invoker;
+use Authanram\Resources\Theme;
 
 trait ProvidesInvokers
 {

@@ -1,4 +1,4 @@
-@php /** @var \Resources\Entities\Fields\BaseField $field */ @endphp
+@php /** @var \Authanram\Resources\Entities\Fields\BaseField $field */ @endphp
 
 <textarea
     class="{{ $action->theme('form.fields.field.input') }}"

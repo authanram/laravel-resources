@@ -1,8 +1,8 @@
 <?php
 
-use Resources\Contracts\ReaderServiceContract;
-use Resources\Http\Controllers\ResourceController;
-use Resources\Http\Controllers\ResourcesController;
+use Authanram\Resources\Contracts\ReaderServiceContract;
+use Authanram\Resources\Http\Controllers\ResourceController;
+use Authanram\Resources\Http\Controllers\ResourcesController;
 
 Route::middleware([
 

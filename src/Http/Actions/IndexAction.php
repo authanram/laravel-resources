@@ -1,9 +1,9 @@
 <?php
 
-namespace Resources\Http\Actions;
+namespace Authanram\Resources\Http\Actions;
 
 use Illuminate\Http\Request;
-use Resources\Entities;
+use Authanram\Resources\Entities;
 
 final class IndexAction extends Action
 {

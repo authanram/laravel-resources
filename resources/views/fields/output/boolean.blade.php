@@ -1,3 +1,3 @@
-@php /** @var \Resources\Entities\Fields\Output\BooleanEntity $field */ @endphp
+@php /** @var \Authanram\Resources\Entities\Fields\Output\BooleanEntity $field */ @endphp
 
 {{ $field->getValue() }}

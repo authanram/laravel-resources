@@ -1,4 +1,4 @@
-@php /** @var \Resources\Http\Actions\Action $action */ @endphp
+@php /** @var \Authanram\Resources\Http\Actions\Action $action */ @endphp
 
 @if ($action->getBreadcrumbs())
 

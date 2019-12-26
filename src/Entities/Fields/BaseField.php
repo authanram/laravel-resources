@@ -1,11 +1,11 @@
 <?php
 
-namespace Resources\Entities\Fields;
+namespace Authanram\Resources\Entities\Fields;
 
 use App\Model;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
-use Resources\Contracts\InputOutputPluginContract;
+use Authanram\Resources\Contracts\InputOutputPluginContract;
 
 class BaseField
 {

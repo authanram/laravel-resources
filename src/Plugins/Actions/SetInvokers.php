@@ -1,13 +1,13 @@
 <?php
 
-namespace Resources\Plugins\Actions;
+namespace Authanram\Resources\Plugins\Actions;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
-use Resources\Contracts\ActionPluginContract;
-use Resources\Entities\Fields\BaseField;
-use Resources\Http\Actions\Action;
-use Resources\Http\Actions\Concerns\ProvidesInvokers;
+use Authanram\Resources\Contracts\ActionPluginContract;
+use Authanram\Resources\Entities\Fields\BaseField;
+use Authanram\Resources\Http\Actions\Action;
+use Authanram\Resources\Http\Actions\Concerns\ProvidesInvokers;
 
 final class SetInvokers implements ActionPluginContract
 {

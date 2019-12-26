@@ -1,8 +1,8 @@
 <?php
 
-namespace Resources\Entities\Fields\Output;
+namespace Authanram\Resources\Entities\Fields\Output;
 
-use Resources\Entities\Fields\BaseField;
+use Authanram\Resources\Entities\Fields\BaseField;
 
 class BelongsToManyEntity extends BaseField
 {

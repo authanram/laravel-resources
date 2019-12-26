@@ -1,13 +1,13 @@
 <?php
 
-namespace Resources\Plugins\Actions;
+namespace Authanram\Resources\Plugins\Actions;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Fluent;
 use Illuminate\Support\Str;
-use Resources\Contracts\ActionPluginContract;
-use Resources\Entities;
-use Resources\Http\Actions\Action;
+use Authanram\Resources\Contracts\ActionPluginContract;
+use Authanram\Resources\Entities;
+use Authanram\Resources\Http\Actions\Action;
 
 final class SetBreadcrumbs implements ActionPluginContract
 {

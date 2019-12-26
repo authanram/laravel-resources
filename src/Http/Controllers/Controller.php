@@ -1,13 +1,13 @@
 <?php
 
-namespace Resources\Http\Controllers;
+namespace Authanram\Resources\Http\Controllers;
 
 use App\Http\Controllers\Controller as AppController;
 use App\Model;
 use Illuminate\Http\Request;
-use Resources\Contracts\ReaderServiceContract;
-use Resources\Contracts\ResourceServiceContract;
-use Resources\Http\Actions\Action;
+use Authanram\Resources\Contracts\ReaderServiceContract;
+use Authanram\Resources\Contracts\ResourceServiceContract;
+use Authanram\Resources\Http\Actions\Action;
 
 class Controller extends AppController
 {

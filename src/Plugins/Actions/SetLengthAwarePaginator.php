@@ -1,12 +1,12 @@
 <?php
 
-namespace Resources\Plugins\Actions;
+namespace Authanram\Resources\Plugins\Actions;
 
 use Illuminate\Http\Request;
-use Resources\Contracts\ActionPluginContract;
-use Resources\Entities\Association;
-use Resources\Entities\Fields\BaseField;
-use Resources\Http\Actions\Action;
+use Authanram\Resources\Contracts\ActionPluginContract;
+use Authanram\Resources\Entities\Association;
+use Authanram\Resources\Entities\Fields\BaseField;
+use Authanram\Resources\Http\Actions\Action;
 
 final class SetLengthAwarePaginator implements ActionPluginContract
 {

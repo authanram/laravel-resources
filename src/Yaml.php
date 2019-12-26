@@ -1,6 +1,6 @@
 <?php
 
-namespace Resources;
+namespace Authanram\Resources;
 
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Log;

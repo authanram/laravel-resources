@@ -1,8 +1,8 @@
 <?php
 
-namespace Resources\Contracts;
+namespace Authanram\Resources\Contracts;
 
-use Resources\Entities\Fields\BaseField;
+use Authanram\Resources\Entities\Fields\BaseField;
 
 interface InputOutputPluginContract
 {

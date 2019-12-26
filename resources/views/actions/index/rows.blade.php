@@ -1,5 +1,5 @@
-@php /** @var \Resources\Http\Actions\IndexAction $action */ @endphp
-@php /** @var \Resources\Entities\Fields\BaseField $field */ @endphp
+@php /** @var \Authanram\Resources\Http\Actions\IndexAction $action */ @endphp
+@php /** @var \Authanram\Resources\Entities\Fields\BaseField $field */ @endphp
 
 @foreach ($action->getRows() as $model)
 

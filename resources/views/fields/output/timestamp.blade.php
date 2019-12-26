@@ -1,5 +1,5 @@
-@php /** @var \Resources\Http\Actions\Action $action */ @endphp
-@php /** @var \Resources\Entities\Fields\Output\TimestampEntity $field */ @endphp
+@php /** @var \Authanram\Resources\Http\Actions\Action $action */ @endphp
+@php /** @var \Authanram\Resources\Entities\Fields\Output\TimestampEntity $field */ @endphp
 
 <span class="{{ $action->theme('fields.timestamp.container') }}">
 

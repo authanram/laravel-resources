@@ -1,3 +1,3 @@
-@php /** @var \Resources\Entities\Fields\BaseField $field */ @endphp
+@php /** @var \Authanram\Resources\Entities\Fields\BaseField $field */ @endphp
 
 {{ $field->getLabel() }}: {{ $field->getValue() }}
