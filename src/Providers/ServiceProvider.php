@@ -11,7 +11,7 @@ class ServiceProvider extends IlluminateServiceProvider
 {
     public function register(): void
     {
-        $this->mergeConfigFrom(static::getConfigurationFilePath(), 'authanram-resources');
+        $this->mergeConfigFrom(__DIR__ . '/../../config.php', 'authanram-resources');
 
         $this->mergeConfigFrom(__DIR__ . '/../../plugins.php', 'authanram-resources-plugins');
 
@@ -42,13 +42,8 @@ class ServiceProvider extends IlluminateServiceProvider
 
         $this->publishes([
 
-            static::getConfigurationFilePath() => config_path('authanram-resources.php'),
+            __DIR__ . '/../../config.php' => config_path('authanram-resources.php'),
 
         ]);
-    }
-
-    private static function getConfigurationFilePath(): string
-    {
-        return __DIR__ . '/../../config.php';
     }
 }
