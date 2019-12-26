@@ -11,7 +11,9 @@ class ServiceProvider extends IlluminateServiceProvider
 {
     public function register(): void
     {
-        if (config('resources')) {
+        $path = config_path('authanram-resources.php');
+
+        if (file_exists($path)) {
 
             $this->mergeConfigFrom(config_path('authanram-resources.php'), 'resources');
 
