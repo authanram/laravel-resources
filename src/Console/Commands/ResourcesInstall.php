@@ -14,6 +14,8 @@ class ResourcesInstall extends Command
 
     public function handle(): void
     {
+        $this->line("\nInstall \"authanram/laravel-resources\"\n");
+
         $this->publishTheme();
 
         $this->publishServiceProvider();
@@ -29,7 +31,7 @@ class ResourcesInstall extends Command
 
         if (file_exists($destinationPath)) {
 
-            $this->warn("\n$sourcePath has not been published.\n");
+            $this->warn('"theme.yaml" has not been published.');
 
             return;
 
