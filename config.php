@@ -4,20 +4,18 @@ use Resources\Theme;
 
 return [
 
-    'acl' => [
-        'can_bypass' => [
-            'administrator',
-        ],
-        'roles' => [
-            'administrator',
-            'moderator',
-            'user',
-        ],
-    ],
-
     'cache' => [
         'enabled' => env('RESOURCES_CACHE_ENABLED', true),
         'key' => env('RESOURCES_CACHE_KEY', 'resources'),
+    ],
+
+    'callbacks' => [
+        'breadcrumbs' => static function (string $text, string $url, string $target = null) {
+            app()->make(\App\Contracts\BreadcrumbsService::class)->addBreadcrumb($text, $url, $target);
+        },
+        'can' => static function (string $permission) {
+            return can('backend.resource.' . $permission);
+        },
     ],
 
     'format_timestamp' => 'd.m.Y, H:i',
@@ -45,10 +43,10 @@ return [
     'theme' => Theme::get(resource_path('theme.yaml')),
 
     'views' => [
-        'extends' => 'welcome',
+        'extends' => 'layouts.backend',
         'sections' => [
-            'breadcrumbs' => 'breadcrumbs',
-            'content' => 'content',
+            'breadcrumbs' => 'backend.breadcrumbs',
+            'content' => 'backend.content',
         ],
     ],
 
