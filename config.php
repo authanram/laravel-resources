@@ -27,6 +27,11 @@ return [
 
     'format_timestamp' => 'd.m.Y, H:i',
 
+    'icon' => [
+        'parameter' => 'icon',
+        'view' => 'components.icon',
+    ],
+
     'namespaces' => [
         'models' => 'App',
     ],
