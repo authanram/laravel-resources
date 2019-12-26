@@ -6,5 +6,5 @@ use Resources\Entities\Fields\BaseField;
 
 class BooleanEntity extends BaseField
 {
-    protected string $view = 'resources::fields.output.boolean';
+    protected string $view = 'authanram-resources::fields.output.boolean';
 }

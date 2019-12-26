@@ -80,7 +80,7 @@ class Routes extends Fluent
 
     public function getResourcesUrl(): string
     {
-        return route(implode('.', config('resources.routes.prefixes')));
+        return route(implode('.', config('authanram-resources.routes.prefixes')));
     }
 
     //

@@ -43,7 +43,7 @@ final class SetAssociations implements ActionPluginContract
 
         $shortName = Str::studly($singular);
 
-        $className = config('resources.namespaces.models') . "\\$shortName";
+        $className = config('authanram-resources.namespaces.models') . "\\$shortName";
 
         return new $className;
     }

@@ -18,7 +18,7 @@ class Theme
 
             }
 
-            $value = config("resources.theme.$arg");
+            $value = config("authanram-resources.theme.$arg");
 
             if (! \is_string($value)) {
 

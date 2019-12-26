@@ -16,7 +16,7 @@ class ResourceService implements ResourceServiceContract
 
     private static function getModelFromRequestPathSegment(Request $request): Model
     {
-        $prefixes = config('resources.routes.prefixes');
+        $prefixes = config('authanram-resources.routes.prefixes');
 
         $segments = collect($request->segments());
 
@@ -26,7 +26,7 @@ class ResourceService implements ResourceServiceContract
 
         $shortName = Str::studly($singularSegment);
 
-        $className = config('resources.namespaces.models') . "\\$shortName";
+        $className = config('authanram-resources.namespaces.models') . "\\$shortName";
 
         return new $className;
     }

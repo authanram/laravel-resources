@@ -2,7 +2,7 @@
 
 <div class="{{ $action->theme('card') }}">
 
-    @include ('resources::actions.flash')
+    @include ('authanram-resources::actions.flash')
 
     @csrf
 
@@ -10,7 +10,7 @@
 
     <div class="{{ $action->theme('padding') }}">
 
-        @include ('resources::actions.form.fields')
+        @include ('authanram-resources::actions.form.fields')
 
         @include ($actions)
 

@@ -24,9 +24,9 @@ trait HasPlugins
 
     private function makePlugins(): Collection
     {
-        $defaultPluginClasses = config('resources::plugins.actions.default');
+        $defaultPluginClasses = config('authanram-resources-plugins.actions.default');
 
-        $actionPluginClasses = config('resources::plugins.actions.' . $this->getAction());
+        $actionPluginClasses = config('authanram-resources-plugins.actions.' . $this->getAction());
 
         $pluginClasses = \array_merge($defaultPluginClasses, $actionPluginClasses);
 

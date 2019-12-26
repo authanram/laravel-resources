@@ -9,7 +9,7 @@ final class IndexAction extends Action
 {
     protected string $action = Entities\Action::INDEX;
 
-    protected string $view = 'resources::actions.index.index';
+    protected string $view = 'authanram-resources::actions.index.index';
 
     protected array $rows;
 

@@ -32,7 +32,7 @@ final class BelongsToMany implements InputOutputPluginContract
 
         $shortName = Str::studly($singularAttribute);
 
-        $namespace = config('resources.namespaces.models');
+        $namespace = config('authanram-resources.namespaces.models');
 
         return $namespace . "\\$shortName";
     }

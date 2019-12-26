@@ -8,6 +8,8 @@ use Resources\Services;
 
 class RouteServiceProvider extends ServiceProvider
 {
+    protected $defer = true;
+
     public function boot(): void
     {
         if ($this->app->runningInConsole()) {

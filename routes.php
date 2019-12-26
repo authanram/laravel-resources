@@ -14,7 +14,7 @@ Route::middleware([
 
 ])->group(static function () {
 
-    $prefixes = config('resources.routes.prefixes');
+    $prefixes = config('authanram-resources.routes.prefixes');
 
     $uriPrefix = implode('/', $prefixes);
 

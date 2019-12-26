@@ -6,5 +6,5 @@ use Resources\Entities\Fields\BaseField;
 
 class StringEntity extends BaseField
 {
-    protected string $view = 'resources::fields.output.string';
+    protected string $view = 'authanram-resources::fields.output.string';
 }

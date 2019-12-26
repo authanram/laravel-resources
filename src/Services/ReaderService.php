@@ -17,7 +17,7 @@ class ReaderService implements ReaderServiceContract
     {
         $resourceName = static::makeResourceFileName($tableName);
 
-        $filePath = config('resources.path') . '/' . $resourceName;
+        $filePath = config('authanram-resources.path') . '/' . $resourceName;
 
         $resource = Yaml::parseFile($filePath);
 
@@ -28,11 +28,11 @@ class ReaderService implements ReaderServiceContract
 
     public static function getResourceNames(): array
     {
-        $cacheKey = config('resources.cache.key');
+        $cacheKey = config('authanram-resources.cache.key');
 
         return Cache::rememberForever(":$cacheKey:resources", static function () {
 
-            $path = config('resources.path');
+            $path = config('authanram-resources.path');
 
             $files = File::allFiles($path);
 

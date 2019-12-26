@@ -57,7 +57,7 @@ class RouteService implements RouteServiceContract
 
     private function setResourceConfiguration(): self
     {
-        $config = take(config('resources'));
+        $config = take(config('authanram-resources'));
 
         $this->modelNamespace = (string)$config->get('namespaces.models');
 

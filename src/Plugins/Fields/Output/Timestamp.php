@@ -27,7 +27,7 @@ final class Timestamp implements InputOutputPluginContract
 
             ? $carbon->diffForHumans()
 
-            : $carbon->format(config('resources.format_timestamp'));
+            : $carbon->format(config('authanram-resources.format_timestamp'));
 
         $field->setValue($timestamp);
     }

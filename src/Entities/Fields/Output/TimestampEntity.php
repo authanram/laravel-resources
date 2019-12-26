@@ -7,7 +7,7 @@ use Resources\Entities\Fields\BaseField;
 
 class TimestampEntity extends BaseField
 {
-    protected string $view = 'resources::fields.output.timestamp';
+    protected string $view = 'authanram-resources::fields.output.timestamp';
 
     public function getDate(): string
     {

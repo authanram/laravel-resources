@@ -10,5 +10,5 @@ final class CreateAction extends Action
 
     protected string $method = 'POST';
 
-    protected string $view = 'resources::actions.create.index';
+    protected string $view = 'authanram-resources::actions.create.index';
 }

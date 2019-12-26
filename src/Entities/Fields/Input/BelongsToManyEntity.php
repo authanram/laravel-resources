@@ -7,7 +7,7 @@ use Resources\Entities\Fields\BaseField;
 
 class BelongsToManyEntity extends BaseField
 {
-    protected string $view = 'resources::fields.input.belongs-to-many';
+    protected string $view = 'authanram-resources::fields.input.belongs-to-many';
 
     public function isSelected(int $id): bool
     {

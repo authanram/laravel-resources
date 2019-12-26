@@ -67,7 +67,7 @@ final class SetFields implements ActionPluginContract
 
     private function handleDefaultPlugins(BaseField $field): BaseField
     {
-        $plugins = collect(config('resources::plugins.fields.default'));
+        $plugins = collect(config('authanram-resources-plugins.fields.default'));
 
         $fn = fn ($plugin) => (new $plugin)->handle($field);
 

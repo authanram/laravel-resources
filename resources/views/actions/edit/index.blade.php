@@ -1,6 +1,6 @@
 @php /** @var \Resources\Http\Actions\EditAction $action */ @endphp
 
-@extends ('resources::actions.index', [
+@extends ('authanram-resources::actions.index', [
 
     'action' => $action,
 
@@ -14,9 +14,9 @@
         method="POST"
     >
 
-        @include ('resources::actions.form.index', [
+        @include ('authanram-resources::actions.form.index', [
 
-            'actions' => 'resources::actions.edit.buttons',
+            'actions' => 'authanram-resources::actions.edit.buttons',
 
         ])
 

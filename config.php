@@ -6,7 +6,7 @@ return [
 
     'cache' => [
         'enabled' => env('RESOURCES_CACHE_ENABLED', true),
-        'key' => env('RESOURCES_CACHE_KEY', 'resources'),
+        'key' => env('RESOURCES_CACHE_KEY', 'authanram-resources'),
     ],
 
     'callbacks' => [

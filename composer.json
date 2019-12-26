@@ -18,8 +18,8 @@
         },
         "laravel": {
             "providers": [
-                "Resources\\Providers\\RouteServiceProvider",
-                "Resources\\Providers\\ServiceProvider"
+                "Resources\\Providers\\ServiceProvider",
+                "Resources\\Providers\\RouteServiceProvider"
             ]
         }
     },

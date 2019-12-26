@@ -11,7 +11,7 @@ class Yaml
 {
     public static function parseFile(string $filePath): \stdClass
     {
-        if (! config('resources.cache.enabled')) {
+        if (! config('authanram-resources.cache.enabled')) {
 
             return static::parseFilePath($filePath);
 
@@ -43,7 +43,7 @@ class Yaml
 
     private static function makeCacheKey(string $subject): string
     {
-        $cacheKey = config('resources.cache.key');
+        $cacheKey = config('authanram-resources.cache.key');
 
         return ":$cacheKey:resource:" . md5($subject);
     }

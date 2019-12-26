@@ -7,7 +7,7 @@
 
         <div class="{{ $field->getClass($action->theme('form.fields.field.container')) }}">
 
-            @include ('resources::fields.input.field')
+            @include ('authanram-resources::fields.input.field')
 
         </div>
 

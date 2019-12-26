@@ -11,9 +11,9 @@ class ServiceProvider extends IlluminateServiceProvider
 {
     public function register(): void
     {
-        $this->mergeConfigFrom(static::getConfigurationFilePath(), 'resources');
+        $this->mergeConfigFrom(static::getConfigurationFilePath(), 'authanram-resources');
 
-        $this->mergeConfigFrom(__DIR__ . '/../../plugins.php', 'resources::plugins');
+        $this->mergeConfigFrom(__DIR__ . '/../../plugins.php', 'authanram-resources-plugins');
 
         $this->app->bind(Contracts\ReaderServiceContract::class, Services\ReaderService::class);
 
@@ -24,11 +24,11 @@ class ServiceProvider extends IlluminateServiceProvider
 
     public function boot(): void
     {
-        if (config('resources')) {
+        if (config('authanram-resources')) {
 
             $this->loadRoutesFrom(__DIR__.'/../../routes.php');
 
-            $this->loadViewsFrom(__DIR__ . '/../../resources/views', 'resources');
+            $this->loadViewsFrom(__DIR__ . '/../../resources/views', 'authanram-resources');
 
         }
 
@@ -47,6 +47,19 @@ class ServiceProvider extends IlluminateServiceProvider
             static::getConfigurationFilePath() => config_path('authanram-resources.php'),
 
         ]);
+    }
+
+    public function provides(): array
+    {
+        return [
+
+            Contracts\ReaderServiceContract::class,
+
+            Contracts\ResourceServiceContract::class,
+
+            Contracts\RouteServiceContract::class,
+
+        ];
     }
 
     private static function getConfigurationFilePath(): string

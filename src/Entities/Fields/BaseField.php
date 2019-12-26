@@ -23,7 +23,7 @@ class BaseField
 
     protected string $label;
 
-    protected string $labelView = 'resources::actions.label';
+    protected string $labelView = 'authanram-resources::actions.label';
 
     protected string $type;
 
@@ -196,7 +196,7 @@ class BaseField
     {
         $this->type = $this->field->get('type');
 
-        $this->view = empty($this->view) ? 'resources::fields.blank' : $this->view;
+        $this->view = empty($this->view) ? 'authanram-resources::fields.blank' : $this->view;
 
         $this->label = static::makeLabelFromAttribute($this->attribute);
 
@@ -231,7 +231,7 @@ class BaseField
     {
         $interactionType = $this->getField()->getInteractionType();
 
-        $pluginClasses = config("resources::plugins.fields.$interactionType");
+        $pluginClasses = config("authanram-resources-plugins.fields.$interactionType");
 
         $fn = fn (string $pluginClass) => new $pluginClass;
 

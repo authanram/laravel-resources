@@ -38,7 +38,7 @@ trait HasBreadcrumbs
      */
     private static function invokeCallback(array $breadcrumbs): void
     {
-        $callback  = config('resources.callbacks.breadcrumbs');
+        $callback  = config('authanram-resources.callbacks.breadcrumbs');
 
         if ($callback && \is_callable($callback)) {
 

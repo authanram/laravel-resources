@@ -10,5 +10,5 @@ final class EditAction extends Action
 
     protected string $method = 'PATCH';
 
-    protected string $view = 'resources::actions.edit.index';
+    protected string $view = 'authanram-resources::actions.edit.index';
 }
