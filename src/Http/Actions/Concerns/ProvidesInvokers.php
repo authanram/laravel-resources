@@ -60,8 +60,8 @@ trait ProvidesInvokers
     public function getInvokerUnpublish(): Invoker
     {
         return Invoker::make([
-            'bgColor' => Theme::getValue('invokers.accents.danger.background'),
-            'color' => Theme::getValue('invokers.accents.danger.color'),
+            'bgColor' => Theme::getValue('invokers.accents.warning.background'),
+            'color' => Theme::getValue('invokers.accents.warning.color'),
             'icon' => Theme::getValue('invokers.icons.unpublish'),
             'key' => 'unpublish',
             'label' => 'Unpublish',
@@ -74,8 +74,8 @@ trait ProvidesInvokers
     public function getInvokerDestroy(): Invoker
     {
         return Invoker::make([
-            'bgColor' => Theme::getValue('invokers.accents.warning.background'),
-            'color' => Theme::getValue('invokers.accents.warning.color'),
+            'bgColor' => Theme::getValue('invokers.accents.danger.background'),
+            'color' => Theme::getValue('invokers.accents.danger.color'),
             'icon' => Theme::getValue('invokers.icons.destroy'),
             'key' => 'destroy',
             'label' => 'Delete',

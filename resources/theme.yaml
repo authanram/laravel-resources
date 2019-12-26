@@ -39,17 +39,17 @@ index:
 invokers:
   container: group-hover:block
   invoker: flex justify-center mr-3 p-1 hover:text-blue-500 w-16
-  background: bg-gray-200
+  background: hover:bg-gray-200
   accents:
     danger:
-      background: bg-green-100
-      color: text-green-600
+      background: hover:bg-red-100
+      color: hover:text-red-700
     success:
-      background: bg-orange-100
-      color: text-orange-600
+      background: hover:bg-green-100
+      color: hover:text-green-600
     warning:
-      background: bg-red-100
-      color: text-red-700
+      background: hover:bg-orange-100
+      color: hover:text-orange-600
   icons:
     default: icon-045
     edit: icon-006

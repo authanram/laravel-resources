@@ -19,7 +19,15 @@
 
             <div class="{{ $action->theme('invokers.container') }}">
 
-                @include ('authanram-resources::actions.invoker')
+                @if (config('authanram-resources.views.invoker'))
+
+                    @include (config('authanram-resources.views.invoker'))
+
+                @else
+
+                    @include ('authanram-resources::actions.invoker')
+
+                @endif
 
             </div>
 
