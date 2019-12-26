@@ -17,6 +17,8 @@ class BaseField
 
     protected Collection $association;
 
+    protected Collection $invokers;
+
     protected string $attribute;
 
     protected string $label;
@@ -56,6 +58,11 @@ class BaseField
     public function getAssociation(): Collection
     {
         return $this->association ?? collect();
+    }
+
+    public function getInvokers(): Collection
+    {
+        return $this->invokers;
     }
 
     public function getAttribute(): string
@@ -112,6 +119,13 @@ class BaseField
     public function setAssociation(Collection $association): self
     {
         $this->association = $association;
+
+        return $this;
+    }
+
+    public function setInvokers(Collection $invokers): self
+    {
+        $this->invokers = $invokers;
 
         return $this;
     }

@@ -16,6 +16,7 @@ abstract class Action extends Fluent
     use Concerns\HasFields;
     use Concerns\HasFlashMessage;
     use Concerns\HasInteractionType;
+    use Concerns\HasInvokers;
     use Concerns\HasLengthAwarePaginator;
     use Concerns\HasMethod;
     use Concerns\HasModel;

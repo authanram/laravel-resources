@@ -10,18 +10,40 @@ class ResourcesInstall extends Command
 {
     protected $signature = 'authanram:resources:install';
 
-    protected $description = 'Install the package.';
+    protected $description = 'Install.';
 
     public function handle(): void
     {
-        File::copy(__DIR__ . '/../../../resources/theme.yaml', resource_path('theme.yaml'));
+        $this->publishTheme();
 
+        $this->publishServiceProvider();
+
+        $this->info("\nDone.\n");
+    }
+
+    private function publishTheme(): void
+    {
+        $sourcePath = __DIR__ . '/../../../resources/theme.yaml';
+
+        $destinationPath = resource_path('theme.yaml');
+
+        if (file_exists($destinationPath)) {
+
+            $this->warn("\n$sourcePath has not been published.\n");
+
+            return;
+
+        }
+
+        File::copy($sourcePath, $destinationPath);
+    }
+
+    private function publishServiceProvider(): void
+    {
         Artisan::call('vendor:publish', [
 
             '--provider' => 'Resources\\Providers\\ServiceProvider',
 
         ]);
-
-        $this->info("\nDone.\n");
     }
 }

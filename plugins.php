@@ -17,13 +17,18 @@ return [
 
         Action::CREATE => [],
 
-        Action::EDIT => [],
+        Action::EDIT => [
+            Actions\SetInvokers::class,
+        ],
 
         Action::INDEX => [
             Actions\SetLengthAwarePaginator::class,
+            Actions\SetInvokers::class,
         ],
 
-        Action::SHOW => [],
+        Action::SHOW => [
+            Actions\SetInvokers::class,
+        ],
 
         Action::DESTROY => [],
 

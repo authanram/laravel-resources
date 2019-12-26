@@ -18,6 +18,13 @@ return [
         },
     ],
 
+    'development' => [
+        'dump' => [
+            'parameter' => 'dump',
+            'section' => 'dump',
+        ]
+    ],
+
     'format_timestamp' => 'd.m.Y, H:i',
 
     'namespaces' => [

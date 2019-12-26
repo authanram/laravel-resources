@@ -34,6 +34,26 @@ index:
     field: truncate py-4 pl-5 md:pl-6 lg:pl-8
     header: bg-gray-100 flex font-medium items-center pt-1 text-base
     row: hover:bg-gray-100 border-t flex items-center
+invokers:
+  background: bg-gray-200
+  accents:
+    danger:
+      background: bg-green-100
+      color: text-green-600
+    success:
+      background: bg-orange-100
+      color: text-orange-600
+    warning:
+      background: bg-red-100
+      color: text-red-700
+  icons:
+    default: icon-045
+    edit: icon-006
+    duplicate: icon-269
+    show: icon-021
+    publish: icon-055
+    unpublish: icon-057
+    destroy: icon-030
 link:
   accent: text-%accent%-500
   default: hover:underline

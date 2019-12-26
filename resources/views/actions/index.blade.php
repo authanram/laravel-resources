@@ -2,6 +2,16 @@
 
 @extends (config('resources.views.extends'))
 
+@section (config('resources.development.dump.section'))
+
+    @if (take(request()->input(config('resources.development.dump.parameter')))->getIfLocal())
+
+        @dump ($action->dump(request()->input(config('resources.development.dump.parameter'))))
+
+    @endif
+
+@endsection
+
 @section (config('resources.views.sections.breadcrumbs'))
 
     @include ('resources::actions.breadcrumbs')

@@ -60,7 +60,7 @@ class ReaderService implements ReaderServiceContract
 
     private static function makeResourceAssociations(\stdClass $resource): \stdClass
     {
-        $fn = fn (\stdClass $field) => \in_array($field->type, Association::TYPES, true);
+        $fn = fn (\stdClass $field) => \in_array($field->type, Association::TYPES_PIVOT, true);
 
         $associations = collect($resource->fields)->filter($fn)->keys();
 

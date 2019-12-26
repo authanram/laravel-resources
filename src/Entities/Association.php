@@ -33,4 +33,10 @@ class Association
         self::HAS_ONE_THROUGH,
 
     ];
+
+    public const TYPES_PIVOT = [
+
+        self::BELONGS_TO_MANY,
+
+    ];
 }

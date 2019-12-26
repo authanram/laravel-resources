@@ -11,25 +11,15 @@ class ServiceProvider extends IlluminateServiceProvider
 {
     public function register(): void
     {
-        $path = config_path('authanram-resources.php');
+        $this->mergeConfigFrom(static::getConfigurationFilePath(), 'resources');
 
-        if (file_exists($path)) {
+        $this->mergeConfigFrom(__DIR__ . '/../../plugins.php', 'resources::plugins');
 
-            $this->mergeConfigFrom(config_path('authanram-resources.php'), 'resources');
+        $this->app->bind(Contracts\ReaderServiceContract::class, Services\ReaderService::class);
 
-            $this->mergeConfigFrom(__DIR__ . '/../../plugins.php', 'resources::plugins');
+        $this->app->bind(Contracts\ResourceServiceContract::class, Services\ResourceService::class);
 
-            //
-
-            $this->app->bind(Contracts\ReaderServiceContract::class, Services\ReaderService::class);
-
-            $this->app->bind(Contracts\ResourceServiceContract::class, Services\ResourceService::class);
-
-            //
-
-            $this->app->singleton(Contracts\RouteServiceContract::class, Services\RouteService::class);
-
-        }
+        $this->app->singleton(Contracts\RouteServiceContract::class, Services\RouteService::class);
     }
 
     public function boot(): void
@@ -54,10 +44,13 @@ class ServiceProvider extends IlluminateServiceProvider
 
         $this->publishes([
 
-            __DIR__ . '/../../config.php' => config_path('authanram-resources.php'),
-
-            __DIR__ . '/../../resources/theme.yaml' => resource_path('theme.yaml'),
+            static::getConfigurationFilePath() => config_path('authanram-resources.php'),
 
         ]);
+    }
+
+    private static function getConfigurationFilePath(): string
+    {
+        return __DIR__ . '/../../config.php';
     }
 }
