@@ -50,7 +50,7 @@ trait StoresInput
 
     private function getSyncableAssociationNames(): array
     {
-        $associations = Association::TYPES;
+        $associations = Association::TYPES_PIVOT;
 
         $resourceFields = take($this->getRawResource(), 'fields')->toCollection();
 

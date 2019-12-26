@@ -11,8 +11,8 @@
 
         </div>
 
-        <div class="{{ $action->theme('invokers.invoker') }}"></div>
-
     @endforeach
+
+    <div class="{{ $action->theme('invokers.invoker') }}"></div>
 
 </li>

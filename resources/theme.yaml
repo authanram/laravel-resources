@@ -34,10 +34,11 @@ form:
 index:
   list:
     field: truncate py-4 pl-5 md:pl-6 lg:pl-8
-    header: bg-gray-100 flex font-medium items-center pt-1 text-base
-    row: hover:bg-gray-100 border-t flex items-center
+    header: bg-gray-100 flex font-medium items-center text-base
+    row: hover:bg-gray-100 border-t flex group items-center
 invokers:
-  invoker: flex justify-center mr-3 w-16
+  container: group-hover:block
+  invoker: flex justify-center mr-3 p-1 hover:text-blue-500 w-16
   background: bg-gray-200
   accents:
     danger:

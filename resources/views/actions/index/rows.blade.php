@@ -17,7 +17,11 @@
 
         <div class="{{ $action->theme('invokers.invoker') }}">
 
-            @include ('authanram-resources::actions.invoker')
+            <div class="{{ $action->theme('invokers.container') }}">
+
+                @include ('authanram-resources::actions.invoker')
+
+            </div>
 
         </div>
 
