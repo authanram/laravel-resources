@@ -10,7 +10,7 @@ class ResourcesInstall extends Command
 {
     protected $signature = 'authanram:resources:install';
 
-    protected $description = 'Install.';
+    protected $description = 'Install authanram/laravel-resources.';
 
     public function handle(): void
     {
