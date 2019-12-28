@@ -9,14 +9,14 @@ return [
         'key' => env('RESOURCES_CACHE_KEY', 'authanram-resources'),
     ],
 
-    'callbacks' => [
-        'breadcrumbs' => static function (string $text, string $url, string $target = null) {
-            app()->make(\App\Contracts\BreadcrumbsService::class)->addBreadcrumb($text, $url, $target);
-        },
-        'can' => static function (string $permission) {
-            return can('backend.resource.' . $permission);
-        },
-    ],
+//    'callbacks' => [
+//        'breadcrumbs' => static function (string $text, string $url, string $target = null) {
+//            app()->make(\App\Contracts\BreadcrumbsService::class)->addBreadcrumb($text, $url, $target);
+//        },
+//        'can' => static function (string $permission) {
+//            return can('backend.resource.' . $permission);
+//        },
+//    ],
 
     'development' => [
         'dump' => [
