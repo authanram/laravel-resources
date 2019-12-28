@@ -52,7 +52,7 @@ return [
         ],
     ],
 
-    'theme' => Theme::get(resource_path('theme-custom.yaml')),
+    'theme' => Theme::get(resource_path('theme.yaml')),
 
     'views' => [
         'invoker' => 'resources.invoker',
