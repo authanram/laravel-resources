@@ -2,13 +2,19 @@
 
 @if ($action->getFlashMessage())
 
-    <div class="{{ $action->getFlashMessage()->classAttribute }}">
+    <div class="{{ $action->theme('flash.variants.theme.' . $action->getFlashMessage()->variant, 'flash.container') }}">
 
-        <p class="{{ $action->theme('flash.message') }}">
+        <div class="{{ $action->theme('flash.message.container') }}">
 
-            {!! $action->getFlashMessage()->highlight() !!}
+            @icon() {{ $action->theme('flash.icon', 'flash.variants.icon.' . $action->getFlashMessage()->variant) }} @endicon
 
-        </p>
+            <div class="{{ $action->theme('flash.message.text') }}">
+
+                {!! $action->getFlashMessage()->highlight($action->theme('flash.highlight')) !!}
+
+            </div>
+
+        </div>
 
         @if ($action->getFlashMessage()->caption)
 

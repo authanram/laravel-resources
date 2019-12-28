@@ -4,7 +4,7 @@ namespace Authanram\Resources\Entities;
 
 class FlashMessage
 {
-    public string $classAttribute;
+    public string $variant;
 
     public string $text;
 
@@ -12,19 +12,16 @@ class FlashMessage
 
     public function __construct(string $variant, string $text, ?string $caption = null)
     {
-        $padding = theme('padding');
-
-        // @todo use theme
-        $this->classAttribute = "bg-$variant-100 text-$variant-700 $padding";
+        $this->variant = $variant;
 
         $this->text = $text;
 
         $this->caption = $caption;
     }
 
-    public function highlight(string $cssClasses = 'font-semibold'): string
+    public function highlight(string $theme = ''): string
     {
-        return sprintf($this->text, '<span class="' . $cssClasses . '">', '</span>');
+        return sprintf($this->text, '<span class="' . $theme . '">', '</span>');
     }
 
     public static function make(string $variant, string $text, ?string $caption = null): self

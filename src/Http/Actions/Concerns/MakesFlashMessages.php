@@ -10,7 +10,7 @@ trait MakesFlashMessages
 {
     private function flashError(Action $action, Request $request): void
     {
-        $variant = 'red';
+        $variant = 'danger';
 
         $name = strtolower($action->getResourceName());
 
@@ -37,7 +37,7 @@ trait MakesFlashMessages
 
     private function flashSuccess(Action $action, Request $request): void
     {
-        $variant = 'green';
+        $variant = 'success';
 
         $name = $action->makeNameContinuousSingular();
 

@@ -7,9 +7,8 @@ buttons:
     primary: bg-%accent%-500 focus:bg-%accent%-700 hover:bg-%accent%-600 border border-%accent%-500 text-white
     secondary: bg-gray-500 focus:bg-gray-700 hover:bg-gray-600 border border-gray-500 text-white
     tertiary:
-  button: my-1 focus:outline-none rounded
+  button: sm:mr-2 my-1 focus:outline-none rounded w-full sm:w-auto
   directives:
-  inline: mr-2
   size:
     md: py-2 px-4
     sm: py-1 px-3
@@ -31,7 +30,19 @@ fields:
 
 flash:
   caption: text-sm
-  message: font-light text-xl
+  container: pt-6 pb-5 px-4 md:px-8 xl:px-12
+  highlight: font-semibold
+  icon: mr-1 text-lg
+  message:
+    container: flex items-center
+    text: font-light text-xl
+  variants:
+    icon:
+      danger:
+      success:
+    theme:
+      danger: bg-red-100 text-red-700
+      success: bg-green-100 text-green-700
 
 form:
   fields:
@@ -84,4 +95,5 @@ views:
     sections:
       breadcrumbs: backend.breadcrumbs
       content: backend.content
+      flash: backend.flash
     view: layouts.backend

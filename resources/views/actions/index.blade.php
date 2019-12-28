@@ -18,6 +18,12 @@
 
 @endsection
 
+@section ($action->theme('views.layout.sections.flash'))
+
+    @include ('authanram-resources::actions.flash')
+
+@endsection
+
 @section ($action->theme('views.layout.sections.content'))
 
     <div class="{{ $action->theme('content') }}">

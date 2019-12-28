@@ -2,8 +2,6 @@
 
 <div class="{{ $action->theme('card') }}">
 
-    @include ('authanram-resources::actions.flash')
-
     @csrf
 
     @method ($action->getMethod())
