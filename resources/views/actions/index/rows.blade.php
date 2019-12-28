@@ -15,13 +15,13 @@
 
         @endforeach
 
-        <div class="{{ $action->theme('invokers.invoker') }}">
+        <div class="{{ $action->theme('index.list.actions') }}">
 
             <div class="{{ $action->theme('invokers.container') }}">
 
-                @if (config('authanram-resources.views.invoker'))
+                @if ($action->theme('views.invokers'))
 
-                    @include (config('authanram-resources.views.invoker'))
+                    @include ($action->theme('views.invokers'))
 
                 @else
 

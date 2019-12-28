@@ -54,15 +54,4 @@ return [
 
     'theme' => Theme::get(resource_path('theme.yaml')),
 
-    'views' => [
-        'invoker' => 'resources.invoker',
-        'layout' => [
-            'extends' => 'layouts.backend',
-            'sections' => [
-                'breadcrumbs' => 'backend.breadcrumbs',
-                'content' => 'backend.content',
-            ],
-        ]
-    ],
-
 ];

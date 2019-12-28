@@ -1,6 +1,6 @@
 @php /** @var \Authanram\Resources\Http\Actions\EditAction $action */ @endphp
 
-@extends (config('authanram-resources.views.layout.extends'))
+@extends ($action->theme('views.layout.view'))
 
 @section (config('authanram-resources.development.dump.section'))
 
@@ -12,13 +12,13 @@
 
 @endsection
 
-@section (config('authanram-resources.views.layout.sections.breadcrumbs'))
+@section ($action->theme('views.layout.sections.breadcrumbs'))
 
     @include ('authanram-resources::actions.breadcrumbs')
 
 @endsection
 
-@section (config('authanram-resources.views.layout.sections.content'))
+@section ($action->theme('views.layout.sections.content'))
 
     <div class="{{ $action->theme('content') }}">
 

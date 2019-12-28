@@ -10,10 +10,6 @@ class Invoker
 
     public ?int $sortOrder = null;
 
-    public ?string $bgColor = null;
-
-    public ?string $color = null;
-
     public ?string $icon = null;
 
     public ?string $permission = null;
@@ -28,6 +24,8 @@ class Invoker
 
     public ?string $routeKey = null;
 
+    public ?string $theme = null;
+
     public static function make(array $attributes): self
     {
         return (new self)->setAttributes($attributes);
@@ -35,11 +33,7 @@ class Invoker
 
     public function setAttributes(array $attributes): self
     {
-        $this->bgColor = take($attributes)->get('bgColor', $this->bgColor ?? Theme::getValue('invokers.background'));
-
-        $this->color = take($attributes)->get('color', $this->color ?? Theme::getValue('accent'));
-
-        $this->icon = take($attributes)->get('icon', $this->icon ?? Theme::getValue('invokers.icons.default'));
+        $this->icon = take($attributes)->get('icon', $this->icon);
 
         $this->key = take($attributes)->get('key', $this->key);
 
@@ -52,6 +46,8 @@ class Invoker
         $this->separator = take($attributes)->get('separator', $this->separator);
 
         $this->sortOrder = take($attributes)->get('sortOrder', $this->sortOrder ?? 0);
+
+        $this->theme = take($attributes)->get('theme', $this->theme ?? 'invokers.accents.default');
 
         $this->valueColumn = take($attributes)->get('valueColumn', $this->valueColumn);
 

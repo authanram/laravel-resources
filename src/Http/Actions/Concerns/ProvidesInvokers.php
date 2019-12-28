@@ -3,14 +3,13 @@
 namespace Authanram\Resources\Http\Actions\Concerns;
 
 use Authanram\Resources\Entities\Invoker;
-use Authanram\Resources\Theme;
 
 trait ProvidesInvokers
 {
     public function getInvokerEdit(): Invoker
     {
         return Invoker::make([
-            'icon' => Theme::getValue('invokers.icons.edit'),
+            'icon' => 'invokers.icons.edit',
             'key' => 'edit',
             'label' => 'Edit',
             'permission' => 'edit',
@@ -22,7 +21,7 @@ trait ProvidesInvokers
     public function getInvokerDuplicate(): Invoker
     {
         return Invoker::make([
-            'icon' => Theme::getValue('invokers.icons.duplicate'),
+            'icon' => 'invokers.icons.duplicate',
             'key' => 'duplicate',
             'label' => 'Duplicate',
             'permission' => 'duplicate',
@@ -34,7 +33,7 @@ trait ProvidesInvokers
     public function getInvokerShow(): Invoker
     {
         return Invoker::make([
-            'icon' => Theme::getValue('invokers.icons.show'),
+            'icon' => 'invokers.icons.show',
             'key' => 'show',
             'label' => 'Show',
             'permission' => 'show',
@@ -46,42 +45,39 @@ trait ProvidesInvokers
     public function getInvokerPublish(): Invoker
     {
         return Invoker::make([
-            'bgColor' => Theme::getValue('invokers.accents.success.background'),
-            'color' => Theme::getValue('invokers.accents.success.color'),
-            'icon' => Theme::getValue('invokers.icons.publish'),
+            'icon' => 'invokers.icons.publish',
             'key' => 'publish',
             'label' => 'Publish',
             'permission' => 'edit',
             'routeKey' => 'edit',
             'sortOrder' => 40,
+            'theme' => 'invokers.accents.success',
         ]);
     }
 
     public function getInvokerUnpublish(): Invoker
     {
         return Invoker::make([
-            'bgColor' => Theme::getValue('invokers.accents.warning.background'),
-            'color' => Theme::getValue('invokers.accents.warning.color'),
-            'icon' => Theme::getValue('invokers.icons.unpublish'),
+            'icon' => 'invokers.icons.unpublish',
             'key' => 'unpublish',
             'label' => 'Unpublish',
             'permission' => 'edit',
             'routeKey' => 'edit',
             'sortOrder' => 40,
+            'theme' => 'invokers.accents.warning',
         ]);
     }
 
     public function getInvokerDestroy(): Invoker
     {
         return Invoker::make([
-            'bgColor' => Theme::getValue('invokers.accents.danger.background'),
-            'color' => Theme::getValue('invokers.accents.danger.color'),
-            'icon' => Theme::getValue('invokers.icons.destroy'),
+            'icon' => 'invokers.icons.destroy',
             'key' => 'destroy',
             'label' => 'Delete',
             'permission' => 'show',
             'routeKey' => 'destroy',
             'sortOrder' => 50,
+            'theme' => 'invokers.accents.danger',
         ]);
     }
 }

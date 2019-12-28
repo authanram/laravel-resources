@@ -13,6 +13,6 @@
 
     @endforeach
 
-    <div class="{{ $action->theme('invokers.invoker') }}"></div>
+    <div class="{{ $action->theme('index.list.actions') }}"></div>
 
 </li>
