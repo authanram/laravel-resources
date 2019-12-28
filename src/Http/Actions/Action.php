@@ -8,7 +8,7 @@ use Illuminate\View\View;
 use Authanram\Resources\Contracts\ActionPluginContract;
 use Authanram\Resources\Http\Actions\Concerns;
 
-abstract class Action extends Fluent
+class Action extends Fluent
 {
     use Concerns\CanDump;
     use Concerns\HasAction;
@@ -20,6 +20,7 @@ abstract class Action extends Fluent
     use Concerns\HasLengthAwarePaginator;
     use Concerns\HasMethod;
     use Concerns\HasModel;
+    use Concerns\HasPermissionCallback;
     use Concerns\HasPlugins;
     use Concerns\HasRawResource;
     use Concerns\HasResourceName;

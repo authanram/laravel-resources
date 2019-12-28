@@ -6,6 +6,8 @@ use Illuminate\Support\Fluent;
 
 trait HasBreadcrumbs
 {
+    protected ?\Closure $breadcrumbsCallback = null;
+
     /**
      * @var \Illuminate\Support\Fluent[]
      */
@@ -19,6 +21,13 @@ trait HasBreadcrumbs
         return $this->breadcrumbs;
     }
 
+    public function setBreadcrumbsCallback(?\Closure $breadcrumbsCallback): self
+    {
+        $this->breadcrumbsCallback = $breadcrumbsCallback;
+
+        return $this;
+    }
+
     /**
      * @param \Illuminate\Support\Fluent[] $breadcrumbs
      *
@@ -28,7 +37,7 @@ trait HasBreadcrumbs
     {
         $this->breadcrumbs = $breadcrumbs;
 
-        static::invokeCallback($this->breadcrumbs);
+        $this->invokeCallback($this->breadcrumbs);
 
         return $this;
     }
@@ -36,9 +45,9 @@ trait HasBreadcrumbs
     /**
      * @param Fluent[] $breadcrumbs
      */
-    private static function invokeCallback(array $breadcrumbs): void
+    private function invokeCallback(array $breadcrumbs): void
     {
-        $callback  = config('authanram-resources.callbacks.breadcrumbs');
+        $callback = $this->breadcrumbsCallback;
 
         if ($callback && \is_callable($callback)) {
 

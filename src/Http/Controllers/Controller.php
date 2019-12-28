@@ -36,6 +36,10 @@ class Controller extends AppController
     {
         return $action
 
+            ->setBreadcrumbsCallback(static::getBreadcrumbsCallback())
+
+            ->setPermissionCallback(static::getPermissionsCallback())
+
             ->setModel($this->model)
 
             ->setRawResource($this->raw)
