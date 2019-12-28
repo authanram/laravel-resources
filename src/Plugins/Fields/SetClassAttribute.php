@@ -4,7 +4,6 @@ namespace Authanram\Resources\Plugins\Fields;
 
 use Authanram\Resources\Contracts\InputOutputPluginContract;
 use Authanram\Resources\Entities\Fields\BaseField;
-use Authanram\Resources\Theme;
 
 final class SetClassAttribute implements InputOutputPluginContract
 {
@@ -12,7 +11,7 @@ final class SetClassAttribute implements InputOutputPluginContract
     {
         $interactionType = $field->getField()->getInteractionType();
 
-        $defaultClassAttribute = Theme::getValue("fields.default.$interactionType");
+        $defaultClassAttribute = theme("fields.default.$interactionType");
 
         $class = $field->getField()->get('class', $defaultClassAttribute);
 

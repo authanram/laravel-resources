@@ -2,8 +2,6 @@
 
 namespace Authanram\Resources\Entities;
 
-use Authanram\Resources\Theme;
-
 class FlashMessage
 {
     public string $classAttribute;
@@ -14,8 +12,9 @@ class FlashMessage
 
     public function __construct(string $variant, string $text, ?string $caption = null)
     {
-        $padding = Theme::getValue('padding');
+        $padding = theme('padding');
 
+        // @todo use theme
         $this->classAttribute = "bg-$variant-100 text-$variant-700 $padding";
 
         $this->text = $text;

@@ -1,7 +1,5 @@
 <?php
 
-use Authanram\Resources\Theme;
-
 return [
 
     'cache' => [
@@ -51,7 +49,5 @@ return [
             'resources',
         ],
     ],
-
-    'theme' => Theme::get(resource_path('theme.yaml')),
 
 ];

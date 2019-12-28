@@ -2,8 +2,6 @@
 
 namespace Authanram\Resources\Entities;
 
-use Authanram\Resources\Theme;
-
 class Invoker
 {
     public ?bool $valueComparator = null;
