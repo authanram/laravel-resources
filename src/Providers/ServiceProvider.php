@@ -15,8 +15,6 @@ class ServiceProvider extends IlluminateServiceProvider
 
         $this->mergeConfigFrom(__DIR__ . '/../../plugins.php', 'authanram-resources-plugins');
 
-        $this->app->bind(Contracts\ReaderServiceContract::class, Services\ReaderService::class);
-
         $this->app->bind(Contracts\ResourceServiceContract::class, Services\ResourceService::class);
 
         $this->app->singleton(Contracts\RouteServiceContract::class, Services\RouteService::class);
@@ -26,6 +24,8 @@ class ServiceProvider extends IlluminateServiceProvider
 
     public function boot(): void
     {
+        $this->mergeResourcesIntoConfiguration();
+
         $this->loadRoutesFrom(__DIR__.'/../../routes.php');
 
         $this->loadViewsFrom(__DIR__ . '/../../resources/views', 'authanram-resources');
@@ -45,5 +45,29 @@ class ServiceProvider extends IlluminateServiceProvider
             __DIR__ . '/../../config.php' => config_path('authanram-resources.php'),
 
         ]);
+    }
+
+    private function mergeResourcesIntoConfiguration(): void
+    {
+        if (!empty(config('authanram-resources.resources'))) {
+
+            return;
+
+        }
+
+        $resourceService = $this->app->make(Contracts\ResourceServiceContract::class);
+
+        $resources = $resourceService::getResources();
+
+        $this->mergeConfig($resources, 'authanram-resources.resources');
+    }
+
+    private function mergeConfig(array $config, string $key): void
+    {
+        if (! $this->app->configurationIsCached()) {
+
+            data_get($this->app, 'config')->set($key, $config);
+
+        }
     }
 }

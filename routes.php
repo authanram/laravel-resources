@@ -1,6 +1,5 @@
 <?php
 
-use Authanram\Resources\Contracts\ReaderServiceContract;
 use Authanram\Resources\Http\Controllers\ResourceController;
 use Authanram\Resources\Http\Controllers\ResourcesController;
 
@@ -24,7 +23,7 @@ Route::middleware([
 
         ->name($namePrefix);
 
-    $resourceNames = app()->make(ReaderServiceContract::class)::getResourceNames();
+    $resourceNames = array_keys(config('authanram-resources.resources'));
 
     foreach ($resourceNames as $resource) {
 
