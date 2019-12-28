@@ -1,29 +1,11 @@
 @php /** @var \Authanram\Resources\Http\Actions\EditAction $action */ @endphp
 
-<button
-    class="{{ $action->theme('buttons.accents.default', 'buttons.accents.primary') }} mr-2"
-
-    name="_action"
-
-    type="submit"
-
-    value="create"
-
-    {{ $action->theme('buttons.directives') }}
->
-
-    {{ __('Create & Add Another') }}
-
-</button>
-
-<button
-    class="{{ $action->theme('buttons.accents.default', 'buttons.accents.secondary') }}"
-
-    type="submit"
-
-    {{ $action->theme('buttons.directives') }}
->
-
-    {{ __('Create') }} {{ $action->getResourceName() }}
-
-</button>
+@include ('authanram-resources::actions.form.buttons', [
+    'primary' => [
+        'label' => __('Create & Add Another'),
+        'value' => 'create',
+    ],
+    'secondary' => [
+        'label' => __('Create') . ' ' . $action->getResourceName(),
+    ],
+])

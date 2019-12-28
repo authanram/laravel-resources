@@ -9,6 +9,7 @@ buttons:
     tertiary:
   button: my-1 focus:outline-none rounded
   directives:
+  inline: mr-2
   size:
     md: py-2 px-4
     sm: py-1 px-3
