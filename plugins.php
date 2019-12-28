@@ -48,6 +48,7 @@ return [
 
         InteractionType::INPUT => [
             Fields\Input\BelongsToMany::class,
+            Fields\Input\Froala::class,
         ],
 
         InteractionType::OUTPUT => [

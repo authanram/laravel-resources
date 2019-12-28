@@ -1,11 +1,11 @@
 @php /** @var \Authanram\Resources\Entities\Fields\BaseField $field */ @endphp
 
-<input
+<textarea
     class="{{ $action->theme('form.fields.field.input') }}"
 
     name="{{ $field->getAttribute() }}"
-
-    type="text"
-
-    value="{{ $field->getValue() }}"
 >
+
+    {{ $field->getValue() }}
+
+</textarea>
