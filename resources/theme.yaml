@@ -101,4 +101,6 @@ views:
       breadcrumbs: backend.breadcrumbs
       content: backend.content
       flash: backend.flash
+      scripts: scripts
+      styles: styles
     view: layouts.backend

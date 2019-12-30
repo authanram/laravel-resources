@@ -3,15 +3,26 @@
 namespace Authanram\Resources\Plugins\Fields\Input;
 
 use App\Model;
+use Authanram\Resources\Contracts\InputOutputFieldPluginContract;
+use Authanram\Resources\Entities\Fields\BaseField;
+use Authanram\Resources\Entities\Fields\Input\BelongsToMany as Entity;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Fluent;
 use Illuminate\Support\Str;
-use Authanram\Resources\Contracts\InputOutputPluginContract;
-use Authanram\Resources\Entities\Fields\BaseField;
 
-final class BelongsToMany implements InputOutputPluginContract
+final class BelongsToMany implements InputOutputFieldPluginContract
 {
+    public static function getType(): string
+    {
+        return 'belongsToMany';
+    }
+
+    public static function getEntity(): string
+    {
+        return Entity::class;
+    }
+
     public function handle(BaseField $field): void
     {
         /** @var Model $relationClass */

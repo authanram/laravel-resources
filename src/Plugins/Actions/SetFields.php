@@ -2,18 +2,21 @@
 
 namespace Authanram\Resources\Plugins\Actions;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Collection;
-use Illuminate\Support\Str;
-use Illuminate\Support\ViewErrorBag;
 use Authanram\Resources\Contracts\ActionPluginContract;
+use Authanram\Resources\Contracts\InputOutputFieldPluginContract;
 use Authanram\Resources\Entities;
 use Authanram\Resources\Entities\Fields\BaseField;
 use Authanram\Resources\Entities\Fields\Field;
 use Authanram\Resources\Http\Actions\Action;
+use Authanram\Resources\Plugins\Concerns\MakeFieldPluginClass;
+use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
+use Illuminate\Support\ViewErrorBag;
 
 final class SetFields implements ActionPluginContract
 {
+    use MakeFieldPluginClass;
+
     private Action $action;
 
     public function handle(Action $action, Request $request): void
@@ -41,13 +44,8 @@ final class SetFields implements ActionPluginContract
     {
         $resourceField = $this->makeResourceFields()->get($field->attribute);
 
-        $className = $this->makeFieldClassName($resourceField);
-
-        if (!class_exists($className)) {
-
-            throw new \RuntimeException("Class \"$className\" not found.");
-
-        }
+        /** @var InputOutputFieldPluginContract $pluginClass */
+        $pluginClass = $this->makeFieldPluginClass($resourceField, $this->action->getInteractionType());
 
         $rawResource = $this->makeAssociationRawResource($field);
 
@@ -57,8 +55,10 @@ final class SetFields implements ActionPluginContract
 
         $fieldEntity->setInteractionType($this->action->getInteractionType());
 
+        $fieldEntityClassName = $pluginClass::getEntity();
+
         /** @var BaseField $fieldInstance */
-        $fieldInstance = new $className($fieldEntity);
+        $fieldInstance = new $fieldEntityClassName($fieldEntity);
 
         $fieldInstance->setError($error);
 
@@ -74,24 +74,6 @@ final class SetFields implements ActionPluginContract
         $plugins->each($fn);
 
         return $field;
-    }
-
-    private function makeFieldClassName(\stdClass $resourceField): string
-    {
-        $namespace = $this->makeFieldNamespace();
-
-        $shortName = Str::studly($resourceField->type) . 'Entity';
-
-        return $namespace . '\\' . $shortName;
-    }
-
-    private function makeFieldNamespace(): string
-    {
-        $interactionType = $this->action->getInteractionType();
-
-        $studly = Str::studly($interactionType);
-
-        return "\\Authanram\\Resources\\Entities\\Fields\\$studly";
     }
 
     private static function makeFieldError(Request $request, string $attribute): ?string

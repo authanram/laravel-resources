@@ -5,7 +5,7 @@ namespace Authanram\Resources\Entities\Fields\Input;
 use Illuminate\Support\Collection;
 use Authanram\Resources\Entities\Fields\BaseField;
 
-class BelongsToManyEntity extends BaseField
+class BelongsToMany extends BaseField
 {
     protected string $view = 'authanram-resources::fields.input.belongs-to-many';
 

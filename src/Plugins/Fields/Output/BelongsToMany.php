@@ -1,16 +1,16 @@
 <?php
 
-namespace Authanram\Resources\Plugins\Fields\Input;
+namespace Authanram\Resources\Plugins\Fields\Output;
 
 use Authanram\Resources\Contracts\InputOutputFieldPluginContract;
 use Authanram\Resources\Entities\Fields\BaseField;
-use Authanram\Resources\Entities\Fields\Input\Froala as Entity;
+use Authanram\Resources\Entities\Fields\Output\BelongsToMany as Entity;
 
-final class Froala implements InputOutputFieldPluginContract
+final class BelongsToMany implements InputOutputFieldPluginContract
 {
     public static function getType(): string
     {
-        return 'froala';
+        return 'belongsToMany';
     }
 
     public static function getEntity(): string

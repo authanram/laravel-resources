@@ -1,4 +1,5 @@
-@php /** @var \Authanram\Resources\Entities\Fields\Input\BelongsToManyEntity $field */ @endphp
+@php /** @var \Authanram\Resources\Entities\Fields\Input\BelongsToMany $field */ @endphp
+@php /** @var \Authanram\Resources\Http\Actions\Action $action */ @endphp
 
 <select
     class="{{ $action->theme('form.fields.field.input') }}"

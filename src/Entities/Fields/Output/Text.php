@@ -4,7 +4,7 @@ namespace Authanram\Resources\Entities\Fields\Output;
 
 use Authanram\Resources\Entities\Fields\BaseField;
 
-class StringEntity extends BaseField
+class Text extends BaseField
 {
-    protected string $view = 'authanram-resources::fields.output.string';
+    protected string $view = 'authanram-resources::fields.output.text';
 }

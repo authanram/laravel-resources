@@ -5,7 +5,7 @@ namespace Authanram\Resources\Entities\Fields\Output;
 use Illuminate\Support\Str;
 use Authanram\Resources\Entities\Fields\BaseField;
 
-class TimestampEntity extends BaseField
+class Timestamp extends BaseField
 {
     protected string $view = 'authanram-resources::fields.output.timestamp';
 

@@ -4,7 +4,7 @@ namespace Authanram\Resources\Entities\Fields\Output;
 
 use Authanram\Resources\Entities\Fields\BaseField;
 
-class BelongsToManyEntity extends BaseField
+class BelongsToMany extends BaseField
 {
     protected string $view = 'authanram-resources::fields.output.belongs-to-many';
 

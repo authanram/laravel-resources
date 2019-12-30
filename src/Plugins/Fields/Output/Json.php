@@ -1,16 +1,16 @@
 <?php
 
-namespace Authanram\Resources\Plugins\Fields\Input;
+namespace Authanram\Resources\Plugins\Fields\Output;
 
 use Authanram\Resources\Contracts\InputOutputFieldPluginContract;
 use Authanram\Resources\Entities\Fields\BaseField;
-use Authanram\Resources\Entities\Fields\Input\Froala as Entity;
+use Authanram\Resources\Entities\Fields\Output\Json as Entity;
 
-final class Froala implements InputOutputFieldPluginContract
+final class Json implements InputOutputFieldPluginContract
 {
     public static function getType(): string
     {
-        return 'froala';
+        return 'json';
     }
 
     public static function getEntity(): string

@@ -1,4 +1,4 @@
-@php /** @var \Authanram\Resources\Entities\Fields\Output\BooleanEntity $field */ @endphp
+@php /** @var \Authanram\Resources\Entities\Fields\Output\Boolean $field */ @endphp
 @php /** @var \Authanram\Resources\Http\Actions\Action $action */ @endphp
 
 <span

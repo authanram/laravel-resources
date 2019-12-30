@@ -3,12 +3,15 @@
 namespace Authanram\Resources\Entities\Fields;
 
 use App\Model;
+use Authanram\Resources\Contracts\InputOutputFieldPluginContract;
+use Authanram\Resources\Plugins\Concerns\MakeFieldPluginClass;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
-use Authanram\Resources\Contracts\InputOutputPluginContract;
 
 class BaseField
 {
+    use MakeFieldPluginClass;
+
     protected $value;
 
     protected ?string $class = null;
@@ -205,9 +208,16 @@ class BaseField
 
     protected function handle(): void
     {
-        $fn = fn (InputOutputPluginContract $plugin) => $plugin->handle($this);
+        $resourceField = (object)$this->field->toArray();
 
-        $this->getPlugins()->each($fn);
+        $interactionType = $this->field->getInteractionType();
+
+        $pluginClass = $this->makeFieldPluginClass($resourceField, $interactionType);
+
+        /** @var InputOutputFieldPluginContract $instance */
+        $instance = new $pluginClass;
+
+        $instance->handle($this);
     }
 
     /**
@@ -222,32 +232,5 @@ class BaseField
             : $this->field->get('value');
 
         return old($this->getAttribute(), $value);
-    }
-
-    /**
-     * @return Collection|InputOutputPluginContract[]
-     */
-    private function getPlugins(): Collection
-    {
-        $interactionType = $this->getField()->getInteractionType();
-
-        $pluginClasses = config("authanram-resources-plugins.fields.$interactionType");
-
-        $fn = fn (string $pluginClass) => new $pluginClass;
-
-        $instances = collect($pluginClasses)->map($fn);
-
-        return $this->filterApplicablePlugins($instances);
-    }
-
-    private function filterApplicablePlugins(Collection $plugins): Collection
-    {
-        return $plugins->filter(function (InputOutputPluginContract $plugin) {
-
-            $shortName = Str::afterLast(\get_class($plugin), '\\');
-
-            return Str::camel($shortName) === $this->getType();
-
-        });
     }
 }

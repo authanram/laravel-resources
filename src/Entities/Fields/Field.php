@@ -13,6 +13,8 @@ class Field extends Fluent
 
     public function __construct(array $data)
     {
+        parent::__construct($data);
+
         $this->attributes = static::unsetEmptyAttributes($data);
     }
 

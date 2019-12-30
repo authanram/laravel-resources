@@ -1,12 +1,12 @@
-@php /** @var \Authanram\Resources\Entities\Fields\Input\Json $field */ @endphp
+@php /** @var \Authanram\Resources\Entities\Fields\Input\Text $field */ @endphp
 @php /** @var \Authanram\Resources\Http\Actions\Action $action */ @endphp
 
-<textarea
+<input
     class="{{ $action->theme('form.fields.field.input') }}"
 
     name="{{ $field->getAttribute() }}"
->{{
 
-    $field->getValue()
+    type="text"
 
-}}</textarea>
+    value="{{ $field->getValue() }}"
+>
