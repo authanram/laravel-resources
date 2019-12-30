@@ -49,20 +49,19 @@ return [
         InteractionType::INPUT => [
             Fields\Input\BelongsToMany::class,
             Fields\Input\Boolean::class,
-            Fields\Input\Froala::class,
             Fields\Input\Json::class,
             Fields\Input\Text::class,
             Fields\Input\Timestamp::class,
-            //\Authanram\ResourcesFieldFroala\Plugins\Input::class,
+            \Authanram\ResourcesFieldFroala\Plugins\Input::class,
         ],
 
         InteractionType::OUTPUT => [
             Fields\Output\BelongsToMany::class,
             Fields\Output\Boolean::class,
-            Fields\Output\Froala::class,
             Fields\Output\Json::class,
             Fields\Output\Text::class,
             Fields\Output\Timestamp::class,
+            \Authanram\ResourcesFieldFroala\Plugins\Output::class,
         ],
     ]
 
