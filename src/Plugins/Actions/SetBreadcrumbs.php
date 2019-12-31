@@ -2,12 +2,12 @@
 
 namespace Authanram\Resources\Plugins\Actions;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Fluent;
-use Illuminate\Support\Str;
 use Authanram\Resources\Contracts\ActionPluginContract;
 use Authanram\Resources\Entities;
 use Authanram\Resources\Http\Actions\Action;
+use Illuminate\Http\Request;
+use Illuminate\Support\Fluent;
+use Illuminate\Support\Str;
 
 final class SetBreadcrumbs implements ActionPluginContract
 {
@@ -77,31 +77,23 @@ final class SetBreadcrumbs implements ActionPluginContract
                 break;
 
             case Entities\Action::SHOW:
-                $text = __(':name Details', compact('name'));
+                $text = static::makeEntityBreadcrumbText(__('Details'), $action);
                 break;
 
             default:
-                $text = static::makeEditBreadcrumbText($action, $name);
+                $text = static::makeEntityBreadcrumbText(__('Edit'), $action);
         }
 
         return $text;
     }
 
-    private static function makeEditBreadcrumbText(Action $action, ?string $name): ?string
+    private static function makeEntityBreadcrumbText(string $text, Action $action): ?string
     {
-        $text = __('Edit :name', compact('name'));
-
         $titleField = $action->getTitleField();
 
         $titleValue = $action->getModel()->{$titleField};
 
-        if ($titleValue) {
-
-            $text = __('Edit') . " (%s$titleValue%s)";
-
-        }
-
-        return $text;
+        return $text . " (%s$titleValue%s)";
     }
 
     private static function makeBreadCrumb(?string $text, ?string $url): ?Fluent

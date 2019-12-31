@@ -31,9 +31,9 @@ class ResourceController extends Controller
         return $this->action->render();
     }
 
-    public function show(Request $request): View
+    public function show(Request $request, Model $model): View
     {
-        $this->setup($request, null, new Actions\ShowAction);
+        $this->setup($request, $model, new Actions\ShowAction);
 
         return $this->action->render();
     }

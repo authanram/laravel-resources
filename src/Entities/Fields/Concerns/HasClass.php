@@ -6,9 +6,11 @@ trait HasClass
 {
     protected ?string $class = null;
 
-    public function getClass(string $append = null): ?string
+    public function getClass(string $action, string $append = null): ?string
     {
-        return trim("$this->class $append");
+        $class = $this->class ?? theme("actions.$action.fields.default");
+
+        return trim("$class $append");
     }
 
     public function setClass(?string $class): self

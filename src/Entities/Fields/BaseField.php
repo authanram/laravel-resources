@@ -5,7 +5,7 @@ namespace Authanram\Resources\Entities\Fields;
 use App\Model;
 use Authanram\Resources\Contracts\InputOutputFieldPluginContract;
 use Authanram\Resources\Entities\Fields\Concerns;
-use Authanram\Resources\Plugins\Concerns\MakeFieldPluginClass;
+use Authanram\Resources\Plugins\Concerns\MakeFieldPluginClassName;
 use Illuminate\Support\Str;
 
 class BaseField
@@ -20,7 +20,7 @@ class BaseField
     use Concerns\HasType;
     use Concerns\HasValue;
     use Concerns\HasView;
-    use MakeFieldPluginClass;
+    use MakeFieldPluginClassName;
 
     public function __construct(Field $field)
     {
@@ -68,7 +68,7 @@ class BaseField
 
         $interactionType = $this->field->getInteractionType();
 
-        $pluginClass = $this->makeFieldPluginClass($resourceField, $interactionType);
+        $pluginClass = $this->makeFieldPluginClassName($resourceField, $interactionType);
 
         /** @var InputOutputFieldPluginContract $instance */
         $instance = new $pluginClass;

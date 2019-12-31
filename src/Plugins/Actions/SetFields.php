@@ -8,14 +8,14 @@ use Authanram\Resources\Entities;
 use Authanram\Resources\Entities\Fields\BaseField;
 use Authanram\Resources\Entities\Fields\Field;
 use Authanram\Resources\Http\Actions\Action;
-use Authanram\Resources\Plugins\Concerns\MakeFieldPluginClass;
+use Authanram\Resources\Plugins\Concerns\MakeFieldPluginClassName;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Support\ViewErrorBag;
 
 final class SetFields implements ActionPluginContract
 {
-    use MakeFieldPluginClass;
+    use MakeFieldPluginClassName;
 
     private Action $action;
 
@@ -35,6 +35,12 @@ final class SetFields implements ActionPluginContract
 
                 return $this->handleDefaultPlugins($instance);
 
+            })->filter(function (BaseField $field) {
+
+                return ! \in_array($field->getAttribute(), $this->makeRelationKeys(), true)
+
+                    || $this->action->getAction() !== Entities\Action::SHOW;
+
             });
 
         $this->action->setFields($fields);
@@ -44,8 +50,8 @@ final class SetFields implements ActionPluginContract
     {
         $resourceField = $this->makeResourceFields()->get($field->attribute);
 
-        /** @var InputOutputFieldPluginContract $pluginClass */
-        $pluginClass = $this->makeFieldPluginClass($resourceField, $this->action->getInteractionType());
+        /** @var InputOutputFieldPluginContract $pluginClassName */
+        $pluginClassName = $this->makeFieldPluginClassName($resourceField, $this->action->getInteractionType());
 
         $rawResource = $this->makeAssociationRawResource($field);
 
@@ -55,7 +61,7 @@ final class SetFields implements ActionPluginContract
 
         $fieldEntity->setInteractionType($this->action->getInteractionType());
 
-        $fieldEntityClassName = $pluginClass::getEntity();
+        $fieldEntityClassName = $pluginClassName::getEntity();
 
         /** @var BaseField $fieldInstance */
         $fieldInstance = new $fieldEntityClassName($fieldEntity);
@@ -108,7 +114,13 @@ final class SetFields implements ActionPluginContract
 
         $fields = take($this->action->getRawResource(), $path)->toCollection();
 
-        return static::mergeFields($fields, $fallbackFields);
+        if (! $fallbackFields) {
+
+            return $fields;
+
+        }
+
+        return $this->mergeFields($fields, $fallbackFields);
     }
 
     private function makeFallbackFields(string $action): ?Collection
@@ -117,7 +129,7 @@ final class SetFields implements ActionPluginContract
 
             Entities\Action::EDIT => Entities\Action::CREATE,
 
-            Entities\Action::INDEX => Entities\Action::SHOW
+            Entities\Action::INDEX => Entities\Action::SHOW,
 
         ];
 
@@ -134,16 +146,19 @@ final class SetFields implements ActionPluginContract
         return take($this->action->getRawResource(), $path)->toCollection();
     }
 
-    private static function mergeFields(Collection $fields, ?Collection $fallbackFields): Collection
+    private function mergeFields(Collection $fields, Collection $fallbackFields): Collection
     {
-        if (!$fallbackFields) {
-
-            return $fields;
-
-        }
-
         $missingFields = $fallbackFields->diffKeys($fields);
 
         return $fields->merge($missingFields);
+    }
+
+    private function makeRelationKeys(): array
+    {
+        $raw = $this->action->getRawResource();
+
+        $relations = take($raw, 'actions.show.relations')->toCollection();
+
+        return $relations->pluck('attribute')->toArray();
     }
 }

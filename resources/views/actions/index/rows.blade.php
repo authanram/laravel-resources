@@ -3,11 +3,11 @@
 
 @foreach ($action->getRows() as $model)
 
-    <li class="{{ $action->theme('index.list.row') }}">
+    <li class="{{ $action->theme('actions.index.row') }}">
 
         @foreach ($action->getFields() as $field)
 
-            <div class="{{ $field->getClass($action->theme('index.list.field')) }}">
+            <div class="{{ $field->getClass($action->getAction(), $action->theme('actions.index.fields.field')) }}">
 
                 {!! view($field->getView(), compact(['action']), ['field' => $field->with($model)]) !!}
 
@@ -15,7 +15,7 @@
 
         @endforeach
 
-        <div class="{{ $action->theme('index.list.invokers.container') }}">
+        <div class="{{ $action->theme('actions.index.invokers.container') }}">
 
             @if ($action->theme('views.invokers'))
 

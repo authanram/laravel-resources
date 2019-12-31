@@ -1,5 +1,28 @@
 accent: blue
 
+actions:
+  create:
+    fields:
+      default: w-full
+  edit:
+    fields:
+      default: w-full
+  index:
+    fields:
+      default: flex-1
+      field: truncate py-4 pl-5 md:pl-6 lg:pl-8
+    header:
+      container: bg-gray-100 flex font-medium items-center text-base
+      field: mt-1
+    invokers:
+      container: inline-flex -mr-2 w-20
+      invoker: group-hover:block hidden
+    row: hover:bg-gray-100 border-t flex group items-center
+  show:
+    container: flex flex-wrap
+    fields:
+      default: w-full
+
 breadcrumbs: p-4 pb-0 md:p-8 md:pb-0
 
 buttons:
@@ -20,8 +43,6 @@ container: m-auto md:w-3/4 xl:w-2/3
 content: pt-4 px-4 md:pt-6 md:px-8
 
 fields:
-  default:
-    output: flex-1
   boolean:
     container: inline-flex items-center justify-center px-2 py-0 text-xs font-semibold tracking-wider leading-loose uppercase rounded-full border
     variants:
@@ -59,17 +80,6 @@ form:
   label:
     container: block mb-6
     text: block font-medium mb-2
-
-index:
-  list:
-    field: truncate py-4 pl-5 md:pl-6 lg:pl-8
-    header:
-      container: bg-gray-100 flex font-medium items-center text-base
-      field: mt-1
-    invokers:
-      invokers: group-hover:block hidden
-      container: inline-flex -mr-2 w-20
-    row: hover:bg-gray-100 border-t flex group items-center
 
 invokers:
   default: cursor-pointer flex items-center justify-between px-4 py-3

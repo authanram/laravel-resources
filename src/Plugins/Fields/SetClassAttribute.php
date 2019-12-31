@@ -9,11 +9,7 @@ final class SetClassAttribute implements InputOutputPluginContract
 {
     public function handle(BaseField $field): void
     {
-        $interactionType = $field->getField()->getInteractionType();
-
-        $defaultClassAttribute = theme("fields.default.$interactionType");
-
-        $class = $field->getField()->get('class', $defaultClassAttribute);
+        $class = $field->getField()->get('class');
 
         $field->setClass($class);
     }

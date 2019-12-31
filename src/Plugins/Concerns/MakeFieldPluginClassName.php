@@ -4,9 +4,9 @@ namespace Authanram\Resources\Plugins\Concerns;
 
 use Authanram\Resources\Contracts\InputOutputFieldPluginContract;
 
-trait MakeFieldPluginClass
+trait MakeFieldPluginClassName
 {
-    private function makeFieldPluginClass(\stdClass $resourceField, string $interactionType): string
+    private function makeFieldPluginClassName(\stdClass $resourceField, string $interactionType): string
     {
         $plugins = collect(config("authanram-resources-plugins.fields.$interactionType"));
 

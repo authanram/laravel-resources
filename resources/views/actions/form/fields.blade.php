@@ -5,7 +5,7 @@
 
     @foreach ($action->getFields() as $field)
 
-        <div class="{{ $field->getClass($action->theme('form.fields.field.container')) }}">
+        <div class="{{ $field->getClass($action->getAction(), $action->theme('form.fields.field.container')) }}">
 
             @include ('authanram-resources::fields.input.field')
 
