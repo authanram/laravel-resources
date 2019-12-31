@@ -3,26 +3,40 @@
 
 @foreach ($action->getFields() as $field)
 
-    <div class="{{ $field->getClass($action->getAction()) }}">
+    <div class="{{ $field->getClass($action->getAction(), $action->theme('actions.show.row')) }}">
 
-        <label class="{{ $action->theme(null) }}">
+        <label class="{{ $action->theme('actions.show.fields.label.container') }}">
 
-                <span class="{{ $action->theme(null) }}">
+            <span class="{{ $action->theme('actions.show.fields.label') }}">
 
-                    {{ $field->getLabel() }}
+                {{ $field->getLabel() }}
 
-                </span>
+            </span>
 
-            {!! view($field->getView(), [
+            <span class="{{ $action->theme('actions.show.fields.label.field') }}">
 
-                'action' => $action,
+                {!! view($field->getView(), [
 
-                'field' => $field->with($action->getModel())
+                    'action' => $action,
 
-            ]) !!}
+                    'field' => $field->with($action->getModel())
+
+                ]) !!}
+
+            </span>
 
         </label>
 
     </div>
+
+    @if (! $loop->last)
+
+        <div class="w-full">
+
+            <div class="border-t"></div>
+
+        </div>
+
+    @endif
 
 @endforeach

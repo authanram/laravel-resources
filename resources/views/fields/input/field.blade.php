@@ -1,9 +1,9 @@
 @php /** @var \Authanram\Resources\Entities\Fields\BaseField $field */ @endphp
 @php /** @var \Authanram\Resources\Http\Actions\Action $action */ @endphp
 
-<label class="{{ $action->theme('form.label.container') }}">
+<label class="{{ $action->theme('form.fields.label.container') }}">
 
-    <span class="{{ $action->theme('form.label.text') }}">
+    <span class="{{ $action->theme('form.fields.label.text') }}">
 
         {{ $field->getLabel() }}
 

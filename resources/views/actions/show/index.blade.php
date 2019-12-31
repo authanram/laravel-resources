@@ -9,7 +9,7 @@
 
 @section ('resources.content')
 
-    <div class="{{ $action->theme('card', 'padding') }}">
+    <div class="{{ $action->theme('card') }}">
 
         <div class="{{ $action->theme('actions.show.container') }}">
 
