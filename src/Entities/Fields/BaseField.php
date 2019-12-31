@@ -5,7 +5,7 @@ namespace Authanram\Resources\Entities\Fields;
 use App\Model;
 use Authanram\Resources\Contracts\InputOutputFieldPluginContract;
 use Authanram\Resources\Entities\Fields\Concerns;
-use Authanram\Resources\Plugins\Concerns\MakeFieldPluginClassName;
+use Authanram\Resources\Plugins\Concerns\MakeField;
 use Illuminate\Support\Str;
 
 class BaseField
@@ -20,7 +20,7 @@ class BaseField
     use Concerns\HasType;
     use Concerns\HasValue;
     use Concerns\HasView;
-    use MakeFieldPluginClassName;
+    use MakeField;
 
     public function __construct(Field $field)
     {

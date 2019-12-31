@@ -13,10 +13,12 @@
 
         <div class="{{ $action->theme('actions.show.container') }}">
 
-            @include ('authanram-resources::actions.show.fields')
+            @include ('authanram-resources::actions.show.fields', ['fields' => $action->getFields()])
 
         </div>
 
     </div>
+
+    @include ('authanram-resources::actions.show.meta')
 
 @endsection

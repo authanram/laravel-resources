@@ -1,7 +1,7 @@
 @php /** @var \Authanram\Resources\Http\Actions\EditAction $action */ @endphp
 @php /** @var \Authanram\Resources\Entities\Fields\BaseField $field */ @endphp
 
-@foreach ($action->getFields() as $field)
+@foreach ($fields as $field)
 
     <div class="{{ $field->getClass($action->getAction(), $action->theme('actions.show.row')) }}">
 

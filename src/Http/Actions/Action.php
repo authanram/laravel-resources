@@ -18,6 +18,7 @@ class Action extends Fluent
     use Concerns\HasInteractionType;
     use Concerns\HasInvokers;
     use Concerns\HasLengthAwarePaginator;
+    use Concerns\HasMetaFields;
     use Concerns\HasMethod;
     use Concerns\HasModel;
     use Concerns\HasPermissionCallback;

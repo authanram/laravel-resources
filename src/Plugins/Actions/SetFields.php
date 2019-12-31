@@ -3,19 +3,17 @@
 namespace Authanram\Resources\Plugins\Actions;
 
 use Authanram\Resources\Contracts\ActionPluginContract;
-use Authanram\Resources\Contracts\InputOutputFieldPluginContract;
 use Authanram\Resources\Entities;
 use Authanram\Resources\Entities\Fields\BaseField;
-use Authanram\Resources\Entities\Fields\Field;
 use Authanram\Resources\Http\Actions\Action;
-use Authanram\Resources\Plugins\Concerns\MakeFieldPluginClassName;
+use Authanram\Resources\Plugins\Concerns\MakeField;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Support\ViewErrorBag;
 
 final class SetFields implements ActionPluginContract
 {
-    use MakeFieldPluginClassName;
+    use MakeField;
 
     private Action $action;
 
@@ -46,31 +44,6 @@ final class SetFields implements ActionPluginContract
         $this->action->setFields($fields);
     }
 
-    private function makeField(\stdClass $field, ?string $error): BaseField
-    {
-        $resourceField = $this->makeResourceFields()->get($field->attribute);
-
-        /** @var InputOutputFieldPluginContract $pluginClassName */
-        $pluginClassName = $this->makeFieldPluginClassName($resourceField, $this->action->getInteractionType());
-
-        $rawResource = $this->makeAssociationRawResource($field);
-
-        $mergedField = \array_merge((array)$field, (array)$resourceField, compact('rawResource'));
-
-        $fieldEntity = new Field($mergedField);
-
-        $fieldEntity->setInteractionType($this->action->getInteractionType());
-
-        $fieldEntityClassName = $pluginClassName::getEntity();
-
-        /** @var BaseField $fieldInstance */
-        $fieldInstance = new $fieldEntityClassName($fieldEntity);
-
-        $fieldInstance->setError($error);
-
-        return $fieldInstance;
-    }
-
     private function handleDefaultPlugins(BaseField $field): BaseField
     {
         $plugins = collect(config('authanram-resources-plugins.fields.default'));
@@ -92,16 +65,6 @@ final class SetFields implements ActionPluginContract
         $fieldMessages = $messages[$attribute] ?? [];
 
         return \array_shift($fieldMessages);
-    }
-
-    private function makeResourceFields(): Collection
-    {
-        return take($this->action->getRawResource(), 'fields')->toCollection();
-    }
-
-    private function makeAssociationRawResource(\stdClass $field): ?\stdClass
-    {
-        return $this->action->getRawResource()->asscociations->get($field->attribute);
     }
 
     private function makeFields(): Collection

@@ -10,6 +10,7 @@ return [
     'actions' => [
         'default' => [
             Actions\SetFields::class,
+            Actions\SetMetaFields::class,
             Actions\SetFlashMessage::class,
             Actions\SetResourceName::class,
             Actions\SetBreadcrumbs::class,
