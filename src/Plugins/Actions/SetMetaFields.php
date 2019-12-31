@@ -22,13 +22,19 @@ final class SetMetaFields implements ActionPluginContract
 
         $updatedAt = $this->makeMetaField($action, 'updated_at');
 
-        $metaFields = collect([$createdAt, $updatedAt]);
+        $metaFields = collect([$createdAt, $updatedAt])->filter();
 
         $action->setMetaFields($metaFields);
     }
 
-    private function makeMetaField(Action $action, string $attribute): BaseField
+    private function makeMetaField(Action $action, string $attribute): ?BaseField
     {
+        if (empty($action->getRawResource()->fields->{$attribute})) {
+
+            return null;
+
+        }
+
         $field = $action->getRawResource()->fields->{$attribute};
 
         $field->attribute = $attribute;

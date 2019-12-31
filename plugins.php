@@ -10,7 +10,6 @@ return [
     'actions' => [
         'default' => [
             Actions\SetFields::class,
-            Actions\SetMetaFields::class,
             Actions\SetFlashMessage::class,
             Actions\SetResourceName::class,
             Actions\SetBreadcrumbs::class,
@@ -23,11 +22,13 @@ return [
         ],
 
         Action::INDEX => [
+            Actions\SetMetaFields::class,
             Actions\SetLengthAwarePaginator::class,
             Actions\SetInvokers::class,
         ],
 
         Action::SHOW => [
+            Actions\SetMetaFields::class,
             Actions\SetInvokers::class,
         ],
 
