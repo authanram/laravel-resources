@@ -58,6 +58,7 @@ return [
         InteractionType::OUTPUT => [
             Fields\Output\BelongsToMany::class,
             Fields\Output\Boolean::class,
+            Fields\Output\Id::class,
             Fields\Output\Json::class,
             Fields\Output\Text::class,
             Fields\Output\Timestamp::class,

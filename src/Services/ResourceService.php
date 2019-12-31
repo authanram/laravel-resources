@@ -25,6 +25,8 @@ class ResourceService implements ResourceServiceContract
 
         $resource = config("authanram-resources.resources.$resourceName");
 
+        $resource->fields->id = (object)['type' => 'id'];
+
         $resource->asscociations = new Fluent();
 
         return $withAssociations ? static::makeResourceAssociations($resource) : $resource;
