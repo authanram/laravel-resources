@@ -45,7 +45,7 @@ final class SetInvokers implements ActionPluginContract
 
     private function makeResourceInvokers(Action $action): void
     {
-        $invokers = take($action->getRawResource(), 'invokers')->toCollection();
+        $invokers = collect(data_get($action->getRawResource(), 'invokers'));
 
         if (! $invokers->count()) {
 

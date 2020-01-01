@@ -7,6 +7,9 @@ use Authanram\Resources\Entities\Fields\BaseField;
 use Authanram\Resources\Entities\Fields\Field;
 use Illuminate\Support\Collection;
 
+/**
+ * @property \Authanram\Resources\Http\Actions\Action $action
+ */
 trait MakeField
 {
     private function makeField(\stdClass $field, string $error = null): BaseField
@@ -58,7 +61,9 @@ trait MakeField
 
     private function makeResourceFields(): Collection
     {
-        return take($this->action->getRawResource(), 'fields')->toCollection();
+        $resourceFields = data_get($this->action->getRawResource(), 'fields');
+
+        return collect($resourceFields);
     }
 
     private function makeAssociationRawResource(\stdClass $field): ?\stdClass

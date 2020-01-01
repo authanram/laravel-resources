@@ -50,7 +50,7 @@ final class BelongsToMany implements InputOutputFieldPluginContract
 
     private static function makeOrderColumn(Fluent $field, Model $model): string
     {
-        $orderColumn = take($field)->get('rawResource.actions.index.attributes.order.column');
+        $orderColumn = data_get($field, 'rawResource.actions.index.attributes.order.column');
 
         if ($orderColumn) {
 

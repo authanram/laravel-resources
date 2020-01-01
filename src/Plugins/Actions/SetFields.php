@@ -71,22 +71,24 @@ final class SetFields implements ActionPluginContract
     {
         $name = $this->action->getAction();
 
-        $fallbackFields = $this->makeFallbackFields($name);
+        $fallbackFieldCollection = $this->makeFallbackFieldCollection($name);
 
-        $path = "actions.$name.fields";
+        $rawResource = $this->action->getRawResource();
 
-        $fields = take($this->action->getRawResource(), $path)->toCollection();
+        $fields = data_get($rawResource, "actions.$name.fields");
 
-        if (! $fallbackFields) {
+        $fieldCollection = collect($fields);
 
-            return $fields;
+        if (! $fallbackFieldCollection) {
+
+            return $fieldCollection;
 
         }
 
-        return $this->mergeFields($fields, $fallbackFields);
+        return $this->mergeFieldCollections($fieldCollection, $fallbackFieldCollection);
     }
 
-    private function makeFallbackFields(string $action): ?Collection
+    private function makeFallbackFieldCollection(string $action): ?Collection
     {
         $fallbackMap = [
 
@@ -104,12 +106,14 @@ final class SetFields implements ActionPluginContract
 
         }
 
-        $path = "actions.$fallbackAction.fields";
+        $rawResource = $this->action->getRawResource();
 
-        return take($this->action->getRawResource(), $path)->toCollection();
+        $fallbackFields = data_get($rawResource, "actions.$fallbackAction.fields");
+
+        return collect($fallbackFields);
     }
 
-    private function mergeFields(Collection $fields, Collection $fallbackFields): Collection
+    private function mergeFieldCollections(Collection $fields, Collection $fallbackFields): Collection
     {
         $missingFields = $fallbackFields->diffKeys($fields);
 
@@ -120,8 +124,8 @@ final class SetFields implements ActionPluginContract
     {
         $raw = $this->action->getRawResource();
 
-        $relations = take($raw, 'actions.show.relations')->toCollection();
+        $relations = data_get($raw, 'actions.show.relations');
 
-        return $relations->pluck('attribute')->toArray();
+        return collect($relations)->pluck('attribute')->toArray();
     }
 }

@@ -19,7 +19,7 @@ final class SetResourceName implements ActionPluginContract
 
     private static function makeSingularResourceName(Action $action): string
     {
-        $rawResourceName = take($action->getRawResource())->get('name');
+        $rawResourceName = data_get($action->getRawResource(), 'name');
 
         return $rawResourceName ?: static::makeResourceName($action->getModel());
     }

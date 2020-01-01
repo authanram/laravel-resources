@@ -21,6 +21,6 @@ class Timestamp extends BaseField
 
     public function isDiffForHumans(): bool
     {
-        return take($this->field->getAttributes())->get('diffForHumans', false);
+        return data_get($this->field->getAttributes(), 'diffForHumans', false);
     }
 }

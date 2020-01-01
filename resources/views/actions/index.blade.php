@@ -4,7 +4,7 @@
 
 @section (config('authanram-resources.development.dump.section'))
 
-    @if (take(request()->input(config('authanram-resources.development.dump.parameter')))->getIfLocal())
+    @if (app()->environment('local') && request()->input(config('authanram-resources.development.dump.parameter')))
 
         @dump ($action->dump(request()->input(config('authanram-resources.development.dump.parameter'))))
 

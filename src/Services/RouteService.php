@@ -57,13 +57,11 @@ class RouteService implements RouteServiceContract
 
     private function setResourceConfiguration(): self
     {
-        $config = take(config('authanram-resources'));
+        $this->modelNamespace = (string)config('authanram-resources.namespaces.models');
 
-        $this->modelNamespace = (string)$config->get('namespaces.models');
+        $this->prefixes = collect(config('authanram-resources.routes.prefixes'));
 
-        $this->prefixes = $config->toCollection('routes.prefixes');
-
-        $this->ignoredClasses = $config->get('routes.bindings.models.ignored');
+        $this->ignoredClasses = config('authanram-resources.routes.bindings.models.ignored');
 
         return $this;
     }

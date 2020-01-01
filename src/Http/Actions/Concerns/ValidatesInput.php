@@ -34,9 +34,9 @@ trait ValidatesInput
 
         $action = $actions[$this->action];
 
-        $validationRules = take($this->getRawResource(), "actions.$action.validators")->toCollection();
+        $validationRules = data_get($this->getRawResource(), "actions.$action.validators");
 
-        return $this->mergeValidationRules($action, $validationRules);
+        return $this->mergeValidationRules($action, collect($validationRules));
     }
 
     private function makeValidator(array $input, array $validationRules): Validator
@@ -52,9 +52,9 @@ trait ValidatesInput
 
         }
 
-        $createActionValidationRules = take($this->getRawResource(), 'actions.create.validators')->toCollection();
+        $createActionValidationRules = data_get($this->getRawResource(), 'actions.create.validators');
 
-        $validationRulesDiff = $createActionValidationRules->diffKeys($validationRules);
+        $validationRulesDiff = collect($createActionValidationRules)->diffKeys($validationRules);
 
         $validationRules = $validationRules->merge($validationRulesDiff);
 

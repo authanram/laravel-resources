@@ -42,19 +42,19 @@ final class SetLengthAwarePaginator implements ActionPluginContract
 
     private static function getOrderBy(Action $action): string
     {
-        return take($action->getRawResource())->get('actions.index.attributes.order.column', 'id');
+        return data_get($action->getRawResource(), 'actions.index.attributes.order.column', 'id');
     }
 
     private static function getOrderDirection(Action $action): string
     {
-        return take($action->getRawResource())->get('actions.index.attributes.order.direction', 'asc');
+        return data_get($action->getRawResource(), 'actions.index.attributes.order.direction', 'asc');
     }
 
     private static function getPerPage(Action $action): int
     {
         $modelPerPage = $action->getModel()->getPerPage();
 
-        $resourcePerPage = take($action->getRawResource())->get('actions.index.attributes.per_page');
+        $resourcePerPage = data_get($action->getRawResource(), 'actions.index.attributes.per_page');
 
         return $resourcePerPage ?? $modelPerPage;
     }

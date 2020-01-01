@@ -31,25 +31,25 @@ class Invoker
 
     public function setAttributes(array $attributes): self
     {
-        $this->icon = take($attributes)->get('icon', $this->icon);
+        $this->icon = data_get($attributes,'icon', $this->icon);
 
-        $this->key = take($attributes)->get('key', $this->key);
+        $this->key = data_get($attributes,'key', $this->key);
 
-        $this->label = take($attributes)->get('label', $this->label);
+        $this->label = data_get($attributes,'label', $this->label);
 
-        $this->permission = take($attributes)->get('permission', $this->permission);
+        $this->permission = data_get($attributes,'permission', $this->permission);
 
-        $this->routeKey = take($attributes)->get('routeKey', $this->routeKey);
+        $this->routeKey = data_get($attributes,'routeKey', $this->routeKey);
 
-        $this->separator = take($attributes)->get('separator', $this->separator);
+        $this->separator = data_get($attributes,'separator', $this->separator);
 
-        $this->sortOrder = take($attributes)->get('sortOrder', $this->sortOrder ?? 0);
+        $this->sortOrder = data_get($attributes,'sortOrder', $this->sortOrder ?? 0);
 
-        $this->theme = take($attributes)->get('theme', $this->theme ?? 'invokers.accents.default');
+        $this->theme = data_get($attributes,'theme', $this->theme ?? 'invokers.accents.default');
 
-        $this->valueColumn = take($attributes)->get('valueColumn', $this->valueColumn);
+        $this->valueColumn = data_get($attributes,'valueColumn', $this->valueColumn);
 
-        $this->valueComparator = take($attributes)->get('valueComparator', $this->valueComparator);
+        $this->valueComparator = data_get($attributes,'valueComparator', $this->valueComparator);
 
         return $this;
     }

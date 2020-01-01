@@ -32,7 +32,7 @@ final class Timestamp implements InputOutputFieldPluginContract
 
         $attributes = $field->getField()->getAttributes();
 
-        $diffForHumans = take($attributes)->get('diffForHumans');
+        $diffForHumans = data_get($attributes, 'diffForHumans');
 
         $timestamp = $diffForHumans
 

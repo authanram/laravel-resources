@@ -14,11 +14,11 @@ final class SetAssociations implements ActionPluginContract
     {
 //        $viewService = app()->make(ViewServiceContract::class);
 //
-//        $associations = take($resourceEntity)->toCollection('raw.actions.show.associations');
+//        $associations = data_get($resourceEntity, 'raw.actions.show.associations');
 //
 //        $parentModel = $resourceEntity->getModel();
 //
-//        $resourceEntity->getViewModel()->associations = $associations
+//        $resourceEntity->getViewModel()->associations = collect($associations)
 //
 //            ->map(static function (\stdClass $association) use ($viewService, $parentModel) {
 //

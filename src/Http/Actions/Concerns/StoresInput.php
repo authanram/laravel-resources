@@ -52,11 +52,11 @@ trait StoresInput
     {
         $associations = Association::TYPES_PIVOT;
 
-        $resourceFields = take($this->getRawResource(), 'fields')->toCollection();
+        $resourceFields = data_get($this->getRawResource(), 'fields');
 
-        $fn = fn (\stdClass $resourceField) => \in_array(take($resourceField)->get('type'), $associations, true);
+        $fn = fn (\stdClass $resourceField) => \in_array(data_get($resourceField, 'type'), $associations, true);
 
-        $syncableAssociations = $resourceFields->filter($fn);
+        $syncableAssociations = collect($resourceFields)->filter($fn);
 
         return $syncableAssociations->keys()->toArray();
     }

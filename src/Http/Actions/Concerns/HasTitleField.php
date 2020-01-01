@@ -17,7 +17,7 @@ trait HasTitleField
 
     private function getTitleFieldFromRawFields(): ?string
     {
-        return take($this->getRawResource())->get('actions.index.attributes.order.column');
+        return data_get($this->getRawResource(), 'actions.index.attributes.order.column');
     }
 
     private function getTitleFieldFromFillable(): string
