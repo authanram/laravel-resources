@@ -51,7 +51,7 @@ trait ProvidesInvokers
             'permission' => 'edit',
             'routeKey' => 'edit',
             'sortOrder' => 40,
-            'theme' => 'invokers.accents.success',
+            'theme' => 'invokers.variants.success',
         ]);
     }
 
@@ -64,7 +64,7 @@ trait ProvidesInvokers
             'permission' => 'edit',
             'routeKey' => 'edit',
             'sortOrder' => 40,
-            'theme' => 'invokers.accents.warning',
+            'theme' => 'invokers.variants.warning',
         ]);
     }
 
@@ -77,7 +77,7 @@ trait ProvidesInvokers
             'permission' => 'show',
             'routeKey' => 'destroy',
             'sortOrder' => 50,
-            'theme' => 'invokers.accents.danger',
+            'theme' => 'invokers.variants.danger',
         ]);
     }
 }

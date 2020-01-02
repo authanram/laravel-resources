@@ -32,15 +32,16 @@ actions:
 breadcrumbs: p-4 pb-0 md:p-8 md:pb-0
 
 buttons:
-  accents:
-    primary: bg-%accent%-500 focus:bg-%accent%-700 hover:bg-%accent%-600 border border-%accent%-500 text-white
-    secondary: bg-gray-500 focus:bg-gray-700 hover:bg-gray-600 border border-gray-500 text-white
-    tertiary:
-  button: sm:mr-2 my-1 focus:outline-none rounded w-full sm:w-auto
+  button: sm:mr-2 my-1 focus:outline-none rounded
   directives:
+  group: w-full sm:w-auto
   size:
     md: py-2 px-4
     sm: py-1 px-3
+  variants:
+    primary: bg-%accent%-500 focus:bg-%accent%-700 hover:bg-%accent%-600 border border-%accent%-500 text-white
+    secondary: bg-gray-500 focus:bg-gray-700 hover:bg-gray-600 border border-gray-500 text-white
+    tertiary:
 
 card: bg-white overflow-hidden mb-4 sm:mb-6 md:mb-8 rounded-lg shadow-md
 
@@ -90,11 +91,6 @@ form:
 invokers:
   default: cursor-pointer flex items-center justify-between px-4 py-3
   directives:
-  accents:
-    danger: hover:bg-red-100 hover:text-red-700
-    default: hover:bg-gray-200 hover:text-%accent%-500
-    success: hover:bg-green-100 hover:text-green-600
-    warning: hover:bg-orange-100 hover:text-orange-600
   icons:
     default:
     edit:
@@ -103,6 +99,11 @@ invokers:
     publish:
     unpublish:
     destroy:
+  variants:
+    danger: hover:bg-red-100 hover:text-red-700
+    default: hover:bg-gray-200 hover:text-%accent%-500
+    success: hover:bg-green-100 hover:text-green-600
+    warning: hover:bg-orange-100 hover:text-orange-600
 
 link:
   accent: text-%accent%-500

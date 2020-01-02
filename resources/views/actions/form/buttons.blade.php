@@ -1,7 +1,7 @@
 @php /** @var \Authanram\Resources\Http\Actions\EditAction $action */ @endphp
 
 <button
-    class="{{ $action->theme('buttons.button', 'buttons.size.md', 'buttons.accents.primary') }}"
+    class="{{ $action->theme('buttons.group', 'buttons.button', 'buttons.size.md', 'buttons.variants.primary') }}"
 
     name="_action"
 
@@ -17,7 +17,7 @@
 </button>
 
 <button
-    class="{{ $action->theme('buttons.button', 'buttons.size.md', 'buttons.accents.secondary') }}"
+    class="{{ $action->theme('buttons.group', 'buttons.button', 'buttons.size.md', 'buttons.variants.secondary') }}"
 
     type="submit"
 
