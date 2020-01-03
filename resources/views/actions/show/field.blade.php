@@ -1,17 +1,19 @@
 @php /** @var \Authanram\Resources\Http\Actions\EditAction $action */ @endphp
 @php /** @var \Authanram\Resources\Entities\Fields\BaseField $field */ @endphp
 
-<div class="{{ $field->getClass($action->getAction(), $action->theme(['resources.list', 'row', 'resources.actions.show.fields.row'])) }}">
+@php ($block = $field->isBlock($field) ? 'block.' : '')
 
-    <div class="{{ $action->theme('resources.actions.show.fields.container') }}">
+<div class="{{ $action->theme(['resources.list', !$field->isBlock($field) ? 'row' : null, 'resources.actions.show.fields.row']) }}">
 
-        <div class="{{ $action->theme(['resources.list.column', 'resources.actions.show.fields.label']) }}">
+    <div class="{{ $action->theme("resources.actions.show.fields.{$block}container") }}">
+
+        <div class="{{ $action->theme(['resources.list.column', "resources.actions.show.fields.{$block}label"]) }}">
 
             {{ $field->getLabel() }}
 
         </div>
 
-        <div class="{{ $action->theme(['resources.list.column', 'resources.actions.show.fields.field']) }}">
+        <div class="{{ $action->theme(['resources.list.column', "resources.actions.show.fields.{$block}field"]) }}">
 
             {!! view($field->getView(), [
 

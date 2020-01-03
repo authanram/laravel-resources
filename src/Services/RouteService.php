@@ -24,9 +24,19 @@ class RouteService implements RouteServiceContract
 
     public function bootResourceRouteBindings(): void
     {
-        $this->setResourceConfiguration()->setSegments();
+        $this
+            ->setResourceConfiguration()
+            ->setSegments();
 
-        $this->setSingularModelName()->setModelName();
+        if ($this->prefixes->count() >= $this->segments->count()) {
+
+            return;
+
+        }
+
+        $this
+            ->setSingularModelName()
+            ->setModelName();
 
         if (! $this->isValidAction()) {
 

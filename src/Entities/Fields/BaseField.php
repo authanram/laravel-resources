@@ -20,6 +20,7 @@ class BaseField
     use Concerns\HasType;
     use Concerns\HasValue;
     use Concerns\HasView;
+    use Concerns\IsBlock;
     use MakeField;
 
     public function __construct(Field $field)
