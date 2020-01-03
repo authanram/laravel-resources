@@ -16,7 +16,7 @@ actions:
       field: mt-1
     invokers:
       container: inline-flex -mr-2 w-20
-      invoker: group-hover:block hidden
+      invoker: group-hover:block lg:hidden
     row: hover:bg-gray-100 border-t flex group items-center
   show:
     container: flex flex-wrap
