@@ -1,6 +1,6 @@
 @php /** @var \Authanram\Resources\Http\Actions\EditAction $action */ @endphp
 
-@extends ($action->theme('views.layout.view'))
+@extends ($action->theme('resources.views.layout.view', 'authanram-resources::layout'))
 
 @section (config('authanram-resources.development.dump.section'))
 
@@ -12,24 +12,32 @@
 
 @endsection
 
-@section ($action->theme('views.layout.sections.breadcrumbs'))
+@section ($action->theme('resources.views.layout.sections.breadcrumbs', 'breadcrumbs'))
 
     @include ('authanram-resources::actions.breadcrumbs')
 
 @endsection
 
-@section ($action->theme('views.layout.sections.flash'))
+@section ($action->theme('resources.views.layout.sections.flash', 'flash'))
 
     @include ('authanram-resources::actions.flash')
 
 @endsection
 
-@section ($action->theme('views.layout.sections.content'))
+@section ($action->theme('resources.views.layout.sections.content', 'content'))
 
-    <div class="{{ $action->theme('content') }}">
+    @yield ('resources.content')
 
-        @yield ('resources.content')
+@endsection
 
-    </div>
+@section ($action->theme('resources.views.layout.sections.meta', 'meta'))
+
+    @yield ('resources.meta')
+
+@endsection
+
+@section ($action->theme('resources.views.layout.sections.pagination', 'pagination'))
+
+    @yield ('resources.pagination')
 
 @endsection

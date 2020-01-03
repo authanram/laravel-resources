@@ -1,17 +1,21 @@
 @php /** @var \Authanram\Resources\Http\Actions\EditAction $action */ @endphp
 
-<div class="{{ $action->theme('card') }}">
+<form
+    action="{{ $postAction }}"
+
+    method="POST"
+>
 
     @csrf
 
     @method ($action->getMethod())
 
-    <div class="{{ $action->theme('padding') }}">
+    <div class="{{ $action->theme('resources.form.container') }}">
 
         @include ('authanram-resources::actions.form.fields')
 
-        @include ($actions)
+        @include ($buttonsView)
 
     </div>
 
-</div>
+</form>

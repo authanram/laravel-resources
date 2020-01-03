@@ -8,18 +8,18 @@
 
 @section ('resources.content')
 
-    <ul class="{{ $action->theme('card') }}">
+    @include ('authanram-resources::actions.index.header')
 
-        @include ('authanram-resources::actions.index.header')
+    @foreach ($action->getRows() as $model)
 
-        @include ('authanram-resources::actions.index.rows')
+        @include ('authanram-resources::actions.index.row')
 
-    </ul>
+    @endforeach
 
-    <div class="flex justify-end">
+@endsection
 
-        @include ('authanram-resources::actions.pagination')
+@section ('resources.pagination')
 
-    </div>
+    @include ('authanram-resources::actions.index.pagination')
 
 @endsection

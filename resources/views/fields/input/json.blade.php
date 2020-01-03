@@ -2,7 +2,7 @@
 @php /** @var \Authanram\Resources\Http\Actions\Action $action */ @endphp
 
 <textarea
-    class="{{ $action->theme('form.fields.field.input') }}"
+    class="{{ $action->theme('resources.form.fields.field.input') }}"
 
     name="{{ $field->getAttribute() }}"
 >{{

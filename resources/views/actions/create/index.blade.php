@@ -8,18 +8,12 @@
 
 @section ('resources.content')
 
-    <form
-        action="{{ $action->getRoutes()->getStoreUrl() }}"
+    @include ('authanram-resources::actions.form.index', [
 
-        method="POST"
-    >
+        'buttonsView' => 'authanram-resources::actions.create.buttons',
 
-        @include ('authanram-resources::actions.form.index', [
+        'postAction' => $action->getRoutes()->getStoreUrl(),
 
-            'actions' => 'authanram-resources::actions.create.buttons',
-
-        ])
-
-    </form>
+    ])
 
 @endsection

@@ -9,7 +9,7 @@ trait ProvidesInvokers
     public function getInvokerEdit(): Invoker
     {
         return Invoker::make([
-            'icon' => 'invokers.icons.edit',
+            'icon' => 'resources.invokers.icons.edit',
             'key' => 'edit',
             'label' => 'Edit',
             'permission' => 'edit',
@@ -21,7 +21,7 @@ trait ProvidesInvokers
     public function getInvokerDuplicate(): Invoker
     {
         return Invoker::make([
-            'icon' => 'invokers.icons.duplicate',
+            'icon' => 'resources.invokers.icons.duplicate',
             'key' => 'duplicate',
             'label' => 'Duplicate',
             'permission' => 'duplicate',
@@ -33,7 +33,7 @@ trait ProvidesInvokers
     public function getInvokerShow(): Invoker
     {
         return Invoker::make([
-            'icon' => 'invokers.icons.show',
+            'icon' => 'resources.invokers.icons.show',
             'key' => 'show',
             'label' => 'Show',
             'permission' => 'show',
@@ -45,39 +45,39 @@ trait ProvidesInvokers
     public function getInvokerPublish(): Invoker
     {
         return Invoker::make([
-            'icon' => 'invokers.icons.publish',
+            'icon' => 'resources.invokers.icons.publish',
             'key' => 'publish',
             'label' => 'Publish',
             'permission' => 'edit',
             'routeKey' => 'edit',
             'sortOrder' => 40,
-            'theme' => 'invokers.variants.success',
+            'theme' => 'resources.invokers.variants.success',
         ]);
     }
 
     public function getInvokerUnpublish(): Invoker
     {
         return Invoker::make([
-            'icon' => 'invokers.icons.unpublish',
+            'icon' => 'resources.invokers.icons.unpublish',
             'key' => 'unpublish',
             'label' => 'Unpublish',
             'permission' => 'edit',
             'routeKey' => 'edit',
             'sortOrder' => 40,
-            'theme' => 'invokers.variants.warning',
+            'theme' => 'resources.invokers.variants.warning',
         ]);
     }
 
     public function getInvokerDestroy(): Invoker
     {
         return Invoker::make([
-            'icon' => 'invokers.icons.destroy',
+            'icon' => 'resources.invokers.icons.destroy',
             'key' => 'destroy',
             'label' => 'Delete',
             'permission' => 'show',
             'routeKey' => 'destroy',
             'sortOrder' => 50,
-            'theme' => 'invokers.variants.danger',
+            'theme' => 'resources.invokers.variants.danger',
         ]);
     }
 }

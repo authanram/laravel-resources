@@ -2,17 +2,21 @@
 
 @if ($action->getBreadcrumbs())
 
-    <div class="{{ $action->theme('breadcrumbs') }}">
+    @foreach ($action->getBreadcrumbs() as $breadcrumb)
 
-        @foreach ($action->getBreadcrumbs() as $breadcrumb)
+        <div class="{{ $action->theme('resources.breadcrumbs.item.' . ($loop->last ? 'last' : 'default')) }}">
 
             <a
-                href="{{ $breadcrumb->get('url') }}"
+                class="{{ $action->theme(['resources.link', 'default', $loop->last ? 'accent' : null]) }}"
 
-                class="{{ $action->theme('link.default', !$loop->last ?: 'link.accent') }}"
+                href="{{ $breadcrumb->get('url') }}"
             >{!!
 
-                sprintf($breadcrumb->get('text'), '<strong>', '</strong>')
+                sprintf(
+                    $breadcrumb->get('text'),
+                    '"<span class="'.$action->theme('resources.breadcrumbs.item.highlight').'">',
+                    '</span>"'
+                )
 
             !!}</a>
 
@@ -22,8 +26,8 @@
 
             @endif
 
-        @endforeach
+        </div>
 
-    </div>
+    @endforeach
 
 @endif

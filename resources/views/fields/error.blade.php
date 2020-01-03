@@ -2,7 +2,7 @@
 
 @if ($field->getError())
 
-    <span class="{{ $action->theme('form.fields.field.error') }}">
+    <span class="{{ $action->theme('resources.form.fields.field.error') }}">
 
         {{ $field->getError() }}
 

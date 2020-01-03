@@ -1,11 +1,11 @@
 @php /** @var \Authanram\Resources\Http\Actions\IndexAction $action */ @endphp
 
 <a
-    class="{{ $action->theme('buttons.button', 'buttons.size.sm', 'buttons.variants.primary', 'actions.index.invokers.invoker') }}"
+    class="{{ $action->theme(['resources.buttons.button', 'resources.buttons.size.sm', 'resources.buttons.variants.primary']) }}"
 
     href="{{ $action->getRoutes()->makeRoute('edit', $model->id) }}"
 
-    {{ $action->theme('buttons.directives') }}
+    {{ $attributes ?? '' }}
 >
 
     {{ $action->getInvokers()->first()->label }}

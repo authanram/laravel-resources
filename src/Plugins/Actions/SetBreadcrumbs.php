@@ -77,7 +77,7 @@ final class SetBreadcrumbs implements ActionPluginContract
                 break;
 
             case Entities\Action::SHOW:
-                $text = static::makeEntityBreadcrumbText(__('Details'), $action);
+                $text = static::makeEntityBreadcrumbText(__('Details of'), $action);
                 break;
 
             default:
@@ -93,7 +93,7 @@ final class SetBreadcrumbs implements ActionPluginContract
 
         $titleValue = $action->getModel()->{$titleField};
 
-        return $text . " (%s$titleValue%s)";
+        return $text . " %s$titleValue%s";
     }
 
     private static function makeBreadCrumb(?string $text, ?string $url): ?Fluent

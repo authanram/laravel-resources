@@ -36,4 +36,6 @@ return [
         ],
     ],
 
+    'theme' => __DIR__ . '/resources/theme.yaml',
+
 ];

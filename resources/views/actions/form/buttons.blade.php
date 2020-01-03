@@ -1,7 +1,7 @@
 @php /** @var \Authanram\Resources\Http\Actions\EditAction $action */ @endphp
 
 <button
-    class="{{ $action->theme('buttons.group', 'buttons.button', 'buttons.size.md', 'buttons.variants.primary') }}"
+    class="{{ $action->theme(['resources.buttons', 'group', 'button', 'size.md', 'variants.primary']) }}"
 
     name="_action"
 
@@ -9,19 +9,21 @@
 
     value="{{ $primary['value'] }}"
 
-    {{ $action->theme('buttons.directives') }}
+    {{ $attributes ?? '' }}
 >
 
     {{ $primary['label'] }}
 
 </button>
 
+<span class="{{ $action->theme(['resources.spacer', 'inline', 'default']) }}"></span>
+
 <button
-    class="{{ $action->theme('buttons.group', 'buttons.button', 'buttons.size.md', 'buttons.variants.secondary') }}"
+    class="{{ $action->theme(['resources.buttons', 'group', 'button', 'size.md', 'variants.secondary']) }}"
 
     type="submit"
 
-    {{ $action->theme('buttons.directives') }}
+    {{ $attributes ?? '' }}
 >
 
     {{ $secondary['label'] }}

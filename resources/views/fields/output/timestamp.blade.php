@@ -1,7 +1,7 @@
 @php /** @var \Authanram\Resources\Entities\Fields\Output\Timestamp $field */ @endphp
 @php /** @var \Authanram\Resources\Http\Actions\Action $action */ @endphp
 
-<span class="{{ $action->theme('fields.timestamp.container') }}">
+<span class="{{ $action->theme('resources.fields.timestamp.container') }}">
 
     @if ($field->isDiffForHumans())
 
@@ -9,9 +9,9 @@
 
     @else
 
-        {{ $field->getDate() }}<span class="{{ $action->theme('fields.timestamp.time.container') }}">,</span>
+        {{ $field->getDate() }}<span class="{{ $action->theme('resources.fields.timestamp.time.container') }}">,</span>
 
-            <span class="{{ $action->theme('fields.timestamp.time.container', 'fields.timestamp.time.value') }}">
+            <span class="{{ $action->theme('resources.fields.timestamp.time.container', 'fields.timestamp.time.value') }}">
 
                 {{ $field->getTime() }}
 

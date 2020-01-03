@@ -26,15 +26,15 @@ class RouteService implements RouteServiceContract
     {
         $this->setResourceConfiguration()->setSegments();
 
-        if (! $this->isValidAction() || ! $this->canBind()) {
+        $this->setSingularModelName()->setModelName();
 
-            return;
+        if (! $this->isValidAction()) {
+
+            abort(404);
 
         }
 
-        $this->setSingularModelName()->setModelName();
-
-        if (! $this->isApplicableModel()) {
+        if (! $this->canBind() || ! $this->isApplicableModel()) {
 
             return;
 
@@ -107,7 +107,8 @@ class RouteService implements RouteServiceContract
 
         $actions = Action::getActions()->toArray();
 
-        return \in_array($lastSegment, $actions, true);
+        return \in_array($lastSegment, $actions, true)
+            || ($this->isApplicableModel() && $this->segments->count() === $this->prefixes->count() + 1);
     }
 
     private function canBind(): bool

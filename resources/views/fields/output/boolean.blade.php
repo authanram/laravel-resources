@@ -1,11 +1,15 @@
 @php /** @var \Authanram\Resources\Entities\Fields\Output\Boolean $field */ @endphp
 @php /** @var \Authanram\Resources\Http\Actions\Action $action */ @endphp
 
-<span
-    class="{{ $action->theme('fields.boolean.container', 'fields.boolean.variants.' . $field->getVariant()) }}"
-    style="min-width:42px;"
+<div
+    class="{{ $action->theme(['resources.fields.boolean.container', 'resources.fields.boolean.variants.' . $field->getVariant()]) }}"
+    style="{{ $action->theme('resources.fields.boolean.style') }}"
 >
 
-    {{ $field->getValue() ? 'true' : 'false' }}
+    <div>
 
-</span>
+        {{ $field->getValue() ? 'true' : 'false' }}
+
+    </div>
+
+</div>

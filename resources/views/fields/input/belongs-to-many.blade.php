@@ -2,7 +2,7 @@
 @php /** @var \Authanram\Resources\Http\Actions\Action $action */ @endphp
 
 <select
-    class="{{ $action->theme('form.fields.field.input') }}"
+    class="{{ $action->theme('resources.form.fields.field.input') }}"
 
     name="{{ $field->getAttribute() }}[]"
 

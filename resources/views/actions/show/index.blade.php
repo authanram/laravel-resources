@@ -9,15 +9,15 @@
 
 @section ('resources.content')
 
-    <div class="{{ $action->theme('card') }}">
+    @foreach ($action->getFields() as $field)
 
-        <div class="{{ $action->theme('actions.show.container') }}">
+        @include ('authanram-resources::actions.show.field')
 
-            @include ('authanram-resources::actions.show.fields', ['fields' => $action->getFields()])
+    @endforeach
 
-        </div>
+@endsection
 
-    </div>
+@section ('resources.meta')
 
     @include ('authanram-resources::actions.show.meta')
 
