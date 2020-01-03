@@ -1,0 +1,7 @@
+resources:
+  breadcrumbs:
+    item:
+      default: hidden sm:inline-block
+      highlight: font-semibold
+      last: inline-block
+    container: mb-4 sm:mb-6

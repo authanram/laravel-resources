@@ -1,0 +1,12 @@
+resources:
+  form:
+    container: p-5 md:p-6 lg:p-8
+    fields:
+      container: flex flex-wrap md:pb-2
+      field:
+        container: w-full
+        error: block font-normal pt-2 md:pt-3 text-red-500 text-xs
+        input: appearance-none block bg-gray-100 focus:bg-gray-500 border border-gray-300 focus:border-gray-500 leading-tight focus:outline-none py-3 px-4 rounded text-gray-700 focus:text-white w-full
+      label:
+        container: block mb-6
+        text: block font-medium mb-2

@@ -1,0 +1,11 @@
+resources:
+  buttons:
+    button: my-1 focus:outline-none rounded
+    group: w-full sm:w-auto
+    size:
+      md: py-2 px-4
+      sm: py-1 px-3
+    variants:
+      primary: bg-%accent%-500 focus:bg-%accent%-700 hover:bg-%accent%-600 border border-%accent%-500 text-white
+      secondary: bg-gray-500 focus:bg-gray-700 hover:bg-gray-600 border border-gray-500 text-white
+      tertiary: bg-gray-100 hover:bg-gray-200 border hover:border-%accent%-500 border-gray-300 hover:text-%accent%-700

@@ -1,0 +1,13 @@
+resources:
+  fields:
+    boolean:
+      container: inline-flex items-center justify-center px-2 py-1 text-sm font-semibold leading-relaxed tracking-wider rounded-full border
+      style: min-width:57px
+      variants:
+        danger: bg-red-100 border-red-200 text-red-800
+        success: bg-green-100 border-green-200 text-green-800
+    timestamp:
+      container: text-sm
+      time:
+        container: xl:inline hidden
+        value: text-gray-500
