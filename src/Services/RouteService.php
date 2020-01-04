@@ -10,135 +10,94 @@ use Authanram\Resources\Entities\Action;
 
 class RouteService implements RouteServiceContract
 {
-    private string $modelName;
-
-    private string $modelNamespace;
-
-    private string $singularModelName;
-
-    private array $ignoredClasses;
-
-    private Collection $prefixes;
-
-    private Collection $segments;
-
     public function bootResourceRouteBindings(): void
     {
-        $this
-            ->setResourceConfiguration()
-            ->setSegments();
+        $prefixes = collect(config('authanram-resources.routes.prefixes'));
 
-        if ($this->prefixes->count() >= $this->segments->count()) {
+        $segments = collect(request()->segments());
+
+        $isResourceRoute = static::isResourceRoute($prefixes, $segments);
+
+        if (! $isResourceRoute) {
 
             return;
 
         }
 
-        $this
-            ->setSingularModelName()
-            ->setModelName();
+        $modelName = static::makeModelName($prefixes, $segments);
 
-        if (! $this->isValidAction()) {
+        $isValidModel = static::isValidModel($modelName);
+
+        if (! static::isValidAction($prefixes, $segments, $isValidModel)) {
 
             abort(404);
 
         }
 
-        if (! $this->canBind() || ! $this->isApplicableModel()) {
-
-            return;
-
-        }
-
-        $this->bind();
+        static::bind($modelName);
     }
 
-    private function bind(): void
+    private static function makeModelName(Collection $prefixes, Collection $segments): string
     {
-        Route::bind($this->singularModelName, function ($value) {
+        $pluralName = $segments->offsetGet($prefixes->count());
+
+        $singularModelName = Str::singular($pluralName);
+
+        $namespace = (string)config('authanram-resources.namespaces.models');
+
+        return $namespace . '\\' . Str::studly($singularModelName);
+    }
+
+    private static function isResourceRoute(Collection $prefixes, Collection $segments): bool
+    {
+        $condition = fn(string $prefix, int $index) => $segments->offsetGet($index) !== $prefix;
+
+        return $prefixes->filter($condition)->isEmpty();
+    }
+
+    private static function isValidAction(Collection $prefixes, Collection $segments, bool $isValidModel): bool
+    {
+        $segmentsCount = $segments->count();
+
+        $prefixesCount = $prefixes->count();
+
+        $hasId = $segmentsCount >= $prefixesCount + 2 && \is_numeric($segments->offsetGet($prefixesCount + 1));
+
+        $lastSegment = $segments->last();
+
+        $isIndexAction = $segmentsCount === $prefixesCount + 1;
+
+        $isCreateAction = $segmentsCount === $prefixesCount + 2 && $lastSegment === Action::CREATE;
+
+        $isShowAction = $hasId && $segmentsCount === $prefixesCount + 2;
+
+        $isOther = $hasId && Action::getActions()->contains($lastSegment);
+
+        return $isValidModel && ($isIndexAction || $isCreateAction || $isShowAction || $isOther);
+    }
+
+    private static function isValidModel(string $modelName): bool
+    {
+        $ignoredClasses = config('authanram-resources.routes.bindings.models.ignored');
+
+        return class_exists($modelName)
+
+            && ! \in_array($modelName, $ignoredClasses, true);
+    }
+
+    private static function bind(string $modelName): void
+    {
+        $baseName = class_basename($modelName);
+
+        $kebab = Str::kebab($baseName);
+
+        Route::bind($kebab, static function ($value) use ($modelName) {
 
             return \is_numeric($value)
 
-                ? $this->modelName::find($value) ?? abort(404)
+                ? $modelName::find($value) ?? abort(404)
 
                 : $value;
         });
-    }
-
-    private function setResourceConfiguration(): self
-    {
-        $this->modelNamespace = (string)config('authanram-resources.namespaces.models');
-
-        $this->prefixes = collect(config('authanram-resources.routes.prefixes'));
-
-        $this->ignoredClasses = config('authanram-resources.routes.bindings.models.ignored');
-
-        return $this;
-    }
-
-    private function setSegments(): self
-    {
-        $this->segments = collect(request()->segments());
-
-        return $this;
-    }
-
-    private function setSingularModelName(): self
-    {
-        $prefixesCount = $this->prefixes->count();
-
-        $pluralName = $this->segments->offsetGet($prefixesCount);
-
-        $this->singularModelName = Str::singular($pluralName);
-
-        return $this;
-    }
-
-    private function setModelName(): self
-    {
-        $this->modelName = $this->modelNamespace
-
-            . '\\'
-
-            . Str::studly($this->singularModelName);
-
-        return $this;
-    }
-
-    private function isValidAction(): bool
-    {
-        $lastSegment = $this->segments->last();
-
-        if (\is_numeric($lastSegment)) {
-
-            return true;
-
-        }
-
-        $actions = Action::getActions()->toArray();
-
-        return \in_array($lastSegment, $actions, true)
-            || ($this->isApplicableModel() && $this->segments->count() === $this->prefixes->count() + 1);
-    }
-
-    private function canBind(): bool
-    {
-        return $this->segments->count() -1 >= $this->prefixes->count()
-
-            && $this->containsAllPrefixes();
-    }
-
-    private function isApplicableModel(): bool
-    {
-        return class_exists($this->modelName)
-
-            && ! \in_array($this->modelName, $this->ignoredClasses, true);
-    }
-
-    private function containsAllPrefixes(): bool
-    {
-        $condition = fn(string $prefix, int $index) => $this->segments->offsetGet($index) !== $prefix;
-
-        return $this->prefixes->filter($condition)->isEmpty();
     }
 }
