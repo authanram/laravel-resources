@@ -2,6 +2,7 @@
 
 namespace Authanram\Resources\Services;
 
+use Authanram\Resources\Helpers\NameResolver;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Str;
@@ -39,13 +40,9 @@ class RouteService implements RouteServiceContract
 
     private static function makeModelName(Collection $prefixes, Collection $segments): string
     {
-        $pluralName = $segments->offsetGet($prefixes->count());
+        $segment = $segments->offsetGet($prefixes->count());
 
-        $singularModelName = Str::singular($pluralName);
-
-        $namespace = (string)config('authanram-resources.namespaces.models');
-
-        return $namespace . '\\' . Str::studly($singularModelName);
+        return NameResolver::makeModelNameFromRequestPathSegment($segment);
     }
 
     private static function isResourceRoute(Collection $prefixes, Collection $segments): bool

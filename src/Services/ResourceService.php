@@ -5,6 +5,7 @@ namespace Authanram\Resources\Services;
 use App\Model;
 use Authanram\Resources\Contracts\ResourceServiceContract;
 use Authanram\Resources\Entities\Association;
+use Authanram\Resources\Helpers\NameResolver;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Fluent;
@@ -16,12 +17,20 @@ class ResourceService implements ResourceServiceContract
 {
     public static function getModel(?Model $model, ?Request $request): Model
     {
-        return $model || ! $request ? $model : static::getModelFromRequestPathSegment($request);
+        if (! $model && $request) {
+
+            $className = NameResolver::makeModelNameFromRequest($request);
+
+            return new $className;
+
+        }
+
+        return $model;
     }
 
     public static function getResource(string $tableName, bool $withAssociations = true): \stdClass
     {
-        $resourceName = static::makeResourceFileName($tableName);
+        $resourceName = NameResolver::makeResourceFileNameFromTableName($tableName);
 
         $resource = config("authanram-resources.resources.$resourceName");
 
@@ -47,30 +56,6 @@ class ResourceService implements ResourceServiceContract
         };
 
         return collect($files)->mapWithKeys($fn)->toArray();
-    }
-
-    private static function getModelFromRequestPathSegment(Request $request): Model
-    {
-        $prefixes = config('authanram-resources.routes.prefixes');
-
-        $segments = collect($request->segments());
-
-        $segment = $segments->offsetGet(\count($prefixes));
-
-        $singularSegment = Str::singular($segment);
-
-        $shortName = Str::studly($singularSegment);
-
-        $className = config('authanram-resources.namespaces.models') . "\\$shortName";
-
-        return new $className;
-    }
-
-    private static function makeResourceFileName(string $table): string
-    {
-        $singularTable = Str::slug($table, '-');
-
-        return Str::singular($singularTable);
     }
 
     private static function makeResourceAssociations(\stdClass $resource): \stdClass
