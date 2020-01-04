@@ -45,7 +45,7 @@ class Invoker
 
         $this->sortOrder = data_get($attributes,'sortOrder', $this->sortOrder ?? 0);
 
-        $this->theme = data_get($attributes,'theme', $this->theme ?? 'invokers.variants.default');
+        $this->theme = data_get($attributes,'theme', $this->theme ?? 'resources.invokers.variants.default');
 
         $this->valueColumn = data_get($attributes,'valueColumn', $this->valueColumn);
 

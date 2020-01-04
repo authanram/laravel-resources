@@ -2,15 +2,19 @@
 
 @if ($action->getFlashMessage())
 
-    <div class="{{ $action->theme(['resources.flash.variants.theme.' . $action->getFlashMessage()->variant, 'resources.flash.container']) }}">
+    <div class="{{ $action->theme(['resources.flash.variants.' . $action->getFlashMessage()->variant, 'resources.flash.container']) }}">
 
         <div class="{{ $action->theme('resources.flash.message.container') }}">
 
-            @php ($icon = 'resources.flash.variants.icon.' . $action->getFlashMessage()->variant)
+            @php ($icon = 'resources.flash.icons.variants.' . $action->getFlashMessage()->variant)
 
             @if ($action->theme($icon, null, false))
 
-                @icon() {{ $action->theme(['resources.flash.icon', $icon]) }} @endicon
+                <span class="{{ $action->theme('resources.flash.icons.container') }}">
+
+                    <span class="{{ $action->theme($icon) }}"></span>
+
+                </span>
 
             @endif
 

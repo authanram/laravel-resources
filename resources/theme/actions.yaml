@@ -4,7 +4,7 @@ resources:
       fields:
         default: flex flex-1
         header: bg-gray-100 border-none flex font-medium text-base
-        row: hover:bg-gray-100 border-t flex group items-center
+        row: hover:bg-gray-100 border-t flex items-center
         value: self-stretch items-center truncate
       invokers:
         container: inline-flex justify-end mr-2 md:mr-4 w-16
