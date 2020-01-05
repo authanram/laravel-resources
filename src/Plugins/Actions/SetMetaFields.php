@@ -18,11 +18,13 @@ final class SetMetaFields implements ActionPluginContract
     {
         $this->action = $action;
 
+        $id = $this->makeMetaField($action, 'id');
+
         $createdAt = $this->makeMetaField($action, 'created_at');
 
         $updatedAt = $this->makeMetaField($action, 'updated_at');
 
-        $metaFields = collect([$createdAt, $updatedAt])->filter();
+        $metaFields = collect([$id, $createdAt, $updatedAt])->filter();
 
         $action->setMetaFields($metaFields);
     }

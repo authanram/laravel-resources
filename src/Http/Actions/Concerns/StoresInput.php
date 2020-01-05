@@ -23,7 +23,13 @@ trait StoresInput
 
         foreach ($syncableAssociationNames as $syncableAssociationName) {
 
-            $values = $input[$syncableAssociationName];
+            $values = $input[$syncableAssociationName] ?? null;
+
+            if (! $values) {
+
+                continue;
+
+            }
 
             $this->getModel()
 
