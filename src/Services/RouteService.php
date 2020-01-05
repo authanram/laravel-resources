@@ -42,7 +42,7 @@ class RouteService implements RouteServiceContract
     {
         $segment = $segments->offsetGet($prefixes->count());
 
-        return NameResolver::makeModelNameFromRequestPathSegment($segment);
+        return NameResolver::makeModelClassNameFromKebabName($segment);
     }
 
     private static function isResourceRoute(Collection $prefixes, Collection $segments): bool

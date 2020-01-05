@@ -19,13 +19,13 @@ class ServiceProvider extends IlluminateServiceProvider
 
         $this->app->singleton(Contracts\RouteServiceContract::class, Services\RouteService::class);
 
+        $this->mergeResourcesIntoConfiguration();
+
         $this->app->register(RouteServiceProvider::class);
     }
 
     public function boot(): void
     {
-        $this->mergeResourcesIntoConfiguration();
-
         $this->loadRoutesFrom(__DIR__.'/../../routes.php');
 
         $this->loadViewsFrom(__DIR__ . '/../../resources/views', 'authanram-resources');

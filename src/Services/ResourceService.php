@@ -2,10 +2,10 @@
 
 namespace Authanram\Resources\Services;
 
-use App\Model;
 use Authanram\Resources\Contracts\ResourceServiceContract;
 use Authanram\Resources\Entities\Association;
 use Authanram\Resources\Helpers\NameResolver;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Fluent;
@@ -19,7 +19,13 @@ class ResourceService implements ResourceServiceContract
     {
         if (! $model && $request) {
 
-            $className = NameResolver::makeModelNameFromRequest($request);
+            $segments = collect($request->segments());
+
+            $offset = \count(config('authanram-resources.routes.prefixes'));
+
+            $segment = $segments->offsetGet($offset);
+
+            $className = NameResolver::makeModelClassNameFromKebabName($segment);
 
             return new $className;
 
@@ -30,7 +36,7 @@ class ResourceService implements ResourceServiceContract
 
     public static function getResource(string $tableName, bool $withAssociations = true): \stdClass
     {
-        $resourceName = NameResolver::makeResourceFileNameFromTableName($tableName);
+        $resourceName = NameResolver::makeResourceFileNameFromSnakeName($tableName);
 
         $resource = config("authanram-resources.resources.$resourceName");
 

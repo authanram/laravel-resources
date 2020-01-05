@@ -20,6 +20,8 @@ final class SetResourceName implements ActionPluginContract
     {
         $rawResourceName = data_get($action->getRawResource(), 'name');
 
-        return $rawResourceName ?: NameResolver::makeResourceName($action->getModel());
+        $basename = class_basename($action->getModel());
+
+        return $rawResourceName ?: NameResolver::makeResourceNameFromStudlyName($basename);
     }
 }

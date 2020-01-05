@@ -2,14 +2,14 @@
 
 namespace Authanram\Resources\Plugins\Fields\Input;
 
-use App\Model;
 use Authanram\Resources\Contracts\InputOutputFieldPluginContract;
 use Authanram\Resources\Entities\Fields\BaseField;
 use Authanram\Resources\Entities\Fields\Input\BelongsToMany as Entity;
+use Authanram\Resources\Helpers\NameResolver;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Fluent;
-use Illuminate\Support\Str;
 
 final class BelongsToMany implements InputOutputFieldPluginContract
 {
@@ -25,8 +25,10 @@ final class BelongsToMany implements InputOutputFieldPluginContract
 
     public function handle(BaseField $field): void
     {
+        $attribute = $field->getAttribute();
+
         /** @var Model $relationClass */
-        $relationClass = static::makeRelationClass($field->getAttribute());
+        $relationClass = NameResolver::makeModelClassNameFromCamelName($attribute);
 
         $relationInstance = new $relationClass;
 
@@ -35,17 +37,6 @@ final class BelongsToMany implements InputOutputFieldPluginContract
         $association = static::makeAssociation($relationInstance, $orderColumn);
 
         $field->setAssociation($association);
-    }
-
-    private static function makeRelationClass(string $attribute): string
-    {
-        $singularAttribute = Str::singular($attribute);
-
-        $shortName = Str::studly($singularAttribute);
-
-        $namespace = config('authanram-resources.namespaces.models');
-
-        return $namespace . "\\$shortName";
     }
 
     private static function makeOrderColumn(Fluent $field, Model $model): string

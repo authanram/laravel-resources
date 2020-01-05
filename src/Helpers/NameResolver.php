@@ -2,46 +2,41 @@
 
 namespace Authanram\Resources\Helpers;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
 class NameResolver
 {
-    public static function makeResourceName(Model $model): string
+    public static function makeModelClassNameFromCamelName(string $camel): string
     {
-        $snake = Str::snake(class_basename($model));
+        $singular = Str::singular($camel);
+
+        $kebab = Str::kebab($singular);
+
+        return static::makeModelClassNameFromKebabName($kebab);
+    }
+
+    public static function makeModelClassNameFromKebabName(string $kebab): string
+    {
+        $singular = Str::singular($kebab);
+
+        $configuration = config("authanram-resources.resources.$singular");
+
+        return data_get($configuration, 'model');
+    }
+
+    public static function makeResourceNameFromStudlyName(string $studly): string
+    {
+        $snake = Str::snake($studly);
 
         $title = Str::title($snake);
 
         return str_replace('_', ' ', $title);
     }
 
-    public static function makeModelNameFromRequest(Request $request): string
+    public static function makeResourceFileNameFromSnakeName(string $snake): string
     {
-        $segments = collect($request->segments());
-
-        $offset = \count(config('authanram-resources.routes.prefixes'));
-
-        $segment = $segments->offsetGet($offset);
-
-        return static::makeModelNameFromRequestPathSegment($segment);
-    }
-
-    public static function makeModelNameFromRequestPathSegment(string $segment): string
-    {
-        $singular = Str::singular($segment);
-
-        $basename = Str::studly($singular);
-
-        $namespace = config('authanram-resources.namespaces.models');
-
-        return "$namespace\\$basename";
-    }
-
-    public static function makeResourceFileNameFromTableName(string $table): string
-    {
-        $singular = Str::slug($table, '-');
+        $singular = Str::slug($snake, '-');
 
         return Str::singular($singular);
     }

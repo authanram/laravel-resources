@@ -2,7 +2,7 @@
 
 namespace Authanram\Resources\Entities;
 
-use App\Model;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Fluent;
 
 class Routes extends Fluent

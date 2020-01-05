@@ -2,7 +2,7 @@
 
 namespace Authanram\Resources\Entities\Fields;
 
-use App\Model;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Fluent;
 
 class Field extends Fluent

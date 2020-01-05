@@ -2,11 +2,11 @@
 
 namespace Authanram\Resources\Http\Controllers;
 
-use App\Model;
+use Authanram\Resources\Http\Actions;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
-use Authanram\Resources\Http\Actions;
 
 class ResourceController extends Controller
 {

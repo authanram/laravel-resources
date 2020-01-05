@@ -2,7 +2,7 @@
 
 namespace Authanram\Resources\Http\Actions\Concerns;
 
-use App\Model;
+use Illuminate\Database\Eloquent\Model;
 
 trait HasModel
 {

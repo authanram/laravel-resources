@@ -2,10 +2,10 @@
 
 namespace Authanram\Resources\Entities\Fields;
 
-use App\Model;
 use Authanram\Resources\Contracts\InputOutputFieldPluginContract;
 use Authanram\Resources\Entities\Fields\Concerns;
 use Authanram\Resources\Plugins\Concerns\MakeField;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
 class BaseField

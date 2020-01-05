@@ -20,6 +20,6 @@
 
 @section ('resources.pagination')
 
-    @include ('authanram-resources::actions.index.pagination')
+    @include ($action->theme('resources.views.pagination', 'authanram-resources::actions.index.pagination'))
 
 @endsection

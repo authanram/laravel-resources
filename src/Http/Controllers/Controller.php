@@ -3,10 +3,10 @@
 namespace Authanram\Resources\Http\Controllers;
 
 use App\Http\Controllers\Controller as AppController;
-use App\Model;
-use Illuminate\Http\Request;
 use Authanram\Resources\Contracts\ResourceServiceContract;
 use Authanram\Resources\Http\Actions\Action;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
 
 class Controller extends AppController
 {

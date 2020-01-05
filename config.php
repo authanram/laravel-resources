@@ -16,10 +16,6 @@ return [
         'view' => 'components.icon',
     ],
 
-    'namespaces' => [
-        'models' => 'App',
-    ],
-
     'path' => resource_path('resources'),
 
     'routes' => [
