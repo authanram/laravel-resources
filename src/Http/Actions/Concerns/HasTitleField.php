@@ -26,14 +26,14 @@ trait HasTitleField
 
         $titleField = \array_shift($fillable);
 
-        if (empty($fillable)) {
+        if (!empty($fillable)) {
 
-            $attributes = array_keys($this->getModel()->getAttributes() ?? []);
-
-            $titleField = \array_shift($attributes);
+            return $titleField;
 
         }
 
-        return $titleField;
+        $attributes = array_keys($this->getModel()->getAttributes() ?? []);
+
+        return \array_shift($attributes);
     }
 }
