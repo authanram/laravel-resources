@@ -32,8 +32,10 @@ trait HasTitleField
 
         }
 
-        $attributes = array_keys($this->getModel()->getAttributes() ?? []);
+        $attributes = $this->getModel()->getAttributes();
 
-        return \array_shift($attributes);
+        $keys = array_keys($attributes);
+
+        return \array_shift($keys);
     }
 }
