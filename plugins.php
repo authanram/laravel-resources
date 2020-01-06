@@ -4,8 +4,17 @@ use Authanram\Resources\Entities\Action;
 use Authanram\Resources\Entities\InteractionType;
 use Authanram\Resources\Plugins\Actions;
 use Authanram\Resources\Plugins\Fields;
+use Authanram\Resources\Plugins\Raw;
 
 return [
+
+    'raw' => [
+        Raw\ResourceFieldDefaults::class,
+        Raw\ActionsCreateFieldDefaults::class,
+        Raw\ActionsCreateValidatorDefaults::class,
+        Raw\ActionsIndexAttributeDefaults::class,
+        Raw\ActionsIndexFieldDefaults::class,
+    ],
 
     'actions' => [
         'default' => [

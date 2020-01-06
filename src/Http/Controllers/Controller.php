@@ -27,7 +27,7 @@ class Controller extends AppController
     {
         $this->model = $this->resourceService::getModel($model, $request);
 
-        $this->raw = $this->resourceService::getResource($this->model->getTable());
+        $this->raw = $this->resourceService::getResourceBySnakeName($this->model->getTable());
 
         $this->action = $this->makeAction($request, $action);
     }

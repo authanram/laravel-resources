@@ -2,6 +2,7 @@
 
 namespace Authanram\Resources\Services;
 
+use Authanram\Resources\Contracts\RawPluginContract;
 use Authanram\Resources\Contracts\ResourceServiceContract;
 use Authanram\Resources\Entities\Association;
 use Authanram\Resources\Helpers\NameResolver;
@@ -34,13 +35,11 @@ class ResourceService implements ResourceServiceContract
         return $model;
     }
 
-    public static function getResource(string $tableName, bool $withAssociations = true): \stdClass
+    public static function getResourceBySnakeName(string $snake, bool $withAssociations = true): \stdClass
     {
-        $resourceName = NameResolver::makeResourceFileNameFromSnakeName($tableName);
+        $resourceName = NameResolver::makeResourceFileNameFromSnakeName($snake);
 
         $resource = config("authanram-resources.resources.$resourceName");
-
-        $resource->fields->id = (object)['type' => 'id'];
 
         $resource->asscociations = new Fluent();
 
@@ -57,11 +56,27 @@ class ResourceService implements ResourceServiceContract
 
             $resource = Yaml::parseFile($fileInfo->getPathname(), Yaml::PARSE_OBJECT_FOR_MAP);
 
-            return [$filename => $resource];
+            return [$filename => static::applyRawPlugins($resource)];
 
         };
 
         return collect($files)->mapWithKeys($fn)->toArray();
+    }
+
+    private static function applyRawPlugins(\stdClass $resource): \stdClass
+    {
+        foreach (config('authanram-resources-plugins.raw', []) as $rawPlugin) {
+
+            $resource = static::applyRawPlugin(new $rawPlugin, $resource);
+
+        }
+
+        return $resource;
+    }
+
+    private static function applyRawPlugin(RawPluginContract $plugin, \stdClass $resource): \stdClass
+    {
+        return $plugin->handle($resource);
     }
 
     private static function makeResourceAssociations(\stdClass $resource): \stdClass
@@ -74,7 +89,7 @@ class ResourceService implements ResourceServiceContract
 
             $snakeAssociation = Str::snake($association);
 
-            $associationResource = static::getResource($snakeAssociation, false);
+            $associationResource = static::getResourceBySnakeName($snakeAssociation, false);
 
             $resource->asscociations->{$association} = $associationResource;
 
