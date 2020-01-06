@@ -21,7 +21,15 @@ final class ResourceFieldDefaults implements RawPluginContract
 
         $fields = static::makeResourceFields($columnsDefinitions);
 
-        $resource->fields = static::setAssociationsToFields($fields, $instance);
+        $fieldsCurrent = data_get($resource, 'fields', (object)[]);
+
+        $resource->fields = (object)array_merge(
+
+            (array)static::setAssociationsToFields($fields, $instance),
+
+            (array)$fieldsCurrent
+
+        );
 
         return $resource;
     }
@@ -48,7 +56,7 @@ final class ResourceFieldDefaults implements RawPluginContract
 
             }
 
-            $fields[$key]['type'] = Association::BELONGS_TO;
+            $fields[$key]->type = Association::BELONGS_TO;
 
             $replace[$key] = $method;
 
@@ -85,7 +93,7 @@ final class ResourceFieldDefaults implements RawPluginContract
 
             ];
 
-            return [$column->Field => $field];
+            return [$column->Field => (object)$field];
 
         })->toArray();
     }

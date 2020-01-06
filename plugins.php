@@ -58,6 +58,7 @@ return [
         ],
 
         InteractionType::INPUT => [
+            Fields\Input\BelongsTo::class,
             Fields\Input\BelongsToMany::class,
             Fields\Input\Boolean::class,
             Fields\Input\Json::class,
@@ -67,6 +68,7 @@ return [
         ],
 
         InteractionType::OUTPUT => [
+            Fields\Output\BelongsTo::class,
             Fields\Output\BelongsToMany::class,
             Fields\Output\Boolean::class,
             Fields\Output\Id::class,
