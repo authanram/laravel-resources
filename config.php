@@ -19,6 +19,7 @@ return [
         'smallint' => 'text',
         'string' => 'text',
         'text' => 'text',
+        'timestamp' => 'timestamp',
         'tinyint' => 'boolean',
     ],
 
