@@ -58,7 +58,10 @@ class RouteService implements RouteServiceContract
 
         $prefixesCount = $prefixes->count();
 
-        $hasId = $segmentsCount >= $prefixesCount + 2 && \is_numeric($segments->offsetGet($prefixesCount + 1));
+        $hasId = $segmentsCount >= $prefixesCount + 2 && (
+            \is_numeric($segments->offsetGet($prefixesCount + 1))
+            || \strlen($segments->offsetGet($prefixesCount + 1)) >= 32
+        );
 
         $lastSegment = $segments->last();
 
@@ -90,11 +93,7 @@ class RouteService implements RouteServiceContract
 
         Route::bind($kebab, static function ($value) use ($modelName) {
 
-            return \is_numeric($value)
-
-                ? $modelName::find($value) ?? abort(404)
-
-                : $value;
+            return $modelName::find($value) ?? abort(404);
         });
     }
 }

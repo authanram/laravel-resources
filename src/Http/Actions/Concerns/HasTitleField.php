@@ -24,6 +24,16 @@ trait HasTitleField
     {
         $fillable = $this->getModel()->getFillable();
 
-        return \array_shift($fillable);
+        $titleField = \array_shift($fillable);
+
+        if (empty($fillable)) {
+
+            $attributes = array_keys($this->getModel()->getAttributes() ?? []);
+
+            $titleField = \array_shift($attributes);
+
+        }
+
+        return $titleField;
     }
 }

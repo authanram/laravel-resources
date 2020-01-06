@@ -9,15 +9,11 @@ class Routes extends Fluent
 {
     protected array $routes;
 
-    protected ?int $id;
+    protected Model $model;
 
     public function __construct(array $routes, Model $model)
     {
-        if ($model->id) {
-
-            $this->id = $model->id;
-
-        }
+        $this->model = $model;
 
         $this->routes = $routes;
     }
@@ -39,27 +35,27 @@ class Routes extends Fluent
 
     public function getDestroyUrl(): string
     {
-        return $this->makeRoute(Action::DESTROY, $this->id);
+        return $this->makeRoute(Action::DESTROY, $this->model->id);
     }
 
     public function getEditUrl(): string
     {
-        return $this->makeRoute(Action::EDIT, $this->id);
+        return $this->makeRoute(Action::EDIT, $this->model->id);
     }
 
     public function getRestoreUrl(): string
     {
-        return $this->makeRoute(Action::RESTORE, $this->id);
+        return $this->makeRoute(Action::RESTORE, $this->model->id);
     }
 
     public function getShowUrl(): string
     {
-        return $this->makeRoute(Action::SHOW, $this->id);
+        return $this->makeRoute(Action::SHOW, $this->model->id);
     }
 
     public function getUpdateUrl(): string
     {
-        return $this->makeRoute(Action::UPDATE, $this->id);
+        return $this->makeRoute(Action::UPDATE, $this->model->id);
     }
 
     //
@@ -85,7 +81,7 @@ class Routes extends Fluent
 
     //
 
-    public function makeRoute(string $action, int $id = null): string
+    public function makeRoute(string $action, $id = null): string
     {
         if ($id) {
 
