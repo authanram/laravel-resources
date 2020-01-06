@@ -11,6 +11,17 @@ return [
         ]
     ],
 
+    'fields' => [
+        'bigint' => 'text',
+        'boolean' => 'boolean',
+        'datetime' => 'timestamp',
+        'integer' => 'text',
+        'json' => 'json',
+        'smallint' => 'text',
+        'string' => 'text',
+        'text' => 'text',
+    ],
+
     'format_timestamp' => 'd.m.Y, H:i',
 
     'icon' => [
