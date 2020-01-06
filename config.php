@@ -2,6 +2,8 @@
 
 return [
 
+    'config_path' => 'authanram-resources.resources',
+
     'development' => [
         'dump' => [
             'parameter' => 'dump',

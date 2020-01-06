@@ -12,8 +12,6 @@ trait HasThemeMethod
      * @param bool $throw
      *
      * @return string
-     *
-     * @throws \Authanram\Theme\Exceptions\ThemeException
      */
     public function theme($keys, $default = null, bool $throw = true): string
     {

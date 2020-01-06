@@ -5,7 +5,7 @@ namespace Authanram\Resources\Plugins\Fields\Input;
 use Authanram\Resources\Contracts\InputOutputFieldPluginContract;
 use Authanram\Resources\Entities\Fields\BaseField;
 use Authanram\Resources\Entities\Fields\Input\BelongsToMany as Entity;
-use Authanram\Resources\Helpers\NameResolver;
+use Authanram\Resources\Helpers\ResourceResolver;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Collection;
@@ -28,7 +28,7 @@ final class BelongsToMany implements InputOutputFieldPluginContract
         $attribute = $field->getAttribute();
 
         /** @var Model $relationClass */
-        $relationClass = NameResolver::makeModelClassNameFromCamelName($attribute);
+        $relationClass = ResourceResolver::makeModelClassNameFromCamelName($attribute);
 
         $relationInstance = new $relationClass;
 

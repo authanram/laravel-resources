@@ -3,9 +3,8 @@
 namespace Authanram\Resources\Plugins\Actions;
 
 use App\Model;
-use Authanram\Resources\Helpers\NameResolver;
+use Authanram\Resources\Helpers\ResourceResolver;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 use Authanram\Resources\Contracts\ActionPluginContract;
 use Authanram\Resources\Http\Actions\Action;
 
@@ -40,7 +39,7 @@ final class SetAssociations implements ActionPluginContract
 
     private static function getModelByAssociationName(string $associationName): Model
     {
-        $className = NameResolver::makeModelClassNameFromCamelName($associationName);
+        $className = ResourceResolver::makeModelClassNameFromCamelName($associationName);
 
         return new $className;
     }
