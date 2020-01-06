@@ -16,6 +16,8 @@ trait MakeField
     {
         $resourceField = $this->makeResourceFields()->get($field->attribute);
 
+        //dd($resourceField);
+
         /** @var InputOutputFieldPluginContract $pluginClassName */
         $pluginClassName = $this->makeFieldPluginClassName($resourceField, $this->action->getInteractionType());
 

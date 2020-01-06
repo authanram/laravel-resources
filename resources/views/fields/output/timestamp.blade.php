@@ -9,7 +9,7 @@
 
     @else
 
-        {{ $field->getDate() }}<p class="{{ $action->theme('resources.fields.types.timestamp.time.container') }}">,</p>
+        {{ $field->getDate() }}<p class="{{ $action->theme('resources.fields.types.timestamp.time.container') }}">,</p>&nbsp;
 
             <p class="{{ $action->theme(['resources.fields.types.timestamp.time', 'container', 'value']) }}">
 
