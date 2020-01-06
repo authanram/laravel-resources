@@ -13,13 +13,13 @@ return [
 
     'fields' => [
         'bigint' => 'text',
-        'boolean' => 'boolean',
         'datetime' => 'timestamp',
         'integer' => 'text',
         'json' => 'json',
         'smallint' => 'text',
         'string' => 'text',
         'text' => 'text',
+        'tinyint' => 'boolean',
     ],
 
     'format_timestamp' => 'd.m.Y, H:i',

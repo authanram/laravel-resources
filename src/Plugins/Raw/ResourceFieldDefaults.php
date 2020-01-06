@@ -48,7 +48,7 @@ final class ResourceFieldDefaults implements RawPluginContract
 
             }
 
-            $fields[$key] = static::makeResourceField($key, Association::BELONGS_TO);
+            $fields[$key]['type'] = Association::BELONGS_TO;
 
             $replace[$key] = $method;
 
@@ -71,16 +71,34 @@ final class ResourceFieldDefaults implements RawPluginContract
 
             $type = Str::before($column->Type, '(');
 
-            $field = static::makeResourceField($column->Field, static::makeFieldType($type));
+            $fieldType = static::makeFieldType($type);
+
+            $field = [
+
+                'attribute' => $column->Field,
+
+                'length' => static::getColumnLength($column->Type),
+
+                'nullable' => $column->Null === 'Yes',
+
+                'type' => $fieldType,
+
+            ];
 
             return [$column->Field => $field];
 
         })->toArray();
     }
 
-    private static function makeResourceField(string $attribute, string $type): \stdClass
+    private static function getColumnLength(string $type): ?int
     {
-        return (object)compact('attribute', 'type');
+        preg_match('/\((.*?)\)/', $type, $matches);
+
+        return ! empty($matches[1]) && \is_numeric($matches[1])
+
+            ? $matches[1]
+
+            : null;
     }
 
     private static function getColumnDefinitions(string $table): array
