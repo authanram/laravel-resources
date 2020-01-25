@@ -12,10 +12,6 @@ class Controller extends AppController
 {
     protected ResourceServiceContract $resourceService;
 
-    protected Model $model;
-
-    protected \stdClass $raw;
-
     protected Action $action;
 
     public function __construct(ResourceServiceContract $resourceService)
@@ -25,24 +21,19 @@ class Controller extends AppController
 
     public function setup(Request $request, ?Model $model, Action $action): void
     {
-        $this->model = $this->resourceService::getModel($model, $request);
+        $model = $model ?? $this->resourceService::getModel($request);
 
-        $this->raw = $this->resourceService::getResourceBySnakeName($this->model->getTable());
+        $raw = $this->resourceService::getResourceByTableName($model->getTable());
 
-        $this->action = $this->makeAction($request, $action);
-    }
-
-    private function makeAction(Request $request, Action $action): Action
-    {
-        return $action
+        $this->action = $action
 
             ->setBreadcrumbsCallback(static::getBreadcrumbsCallback())
 
             ->setPermissionCallback(static::getPermissionsCallback())
 
-            ->setModel($this->model)
+            ->setModel($model)
 
-            ->setRawResource($this->raw)
+            ->setRawResource($raw)
 
             ->handle($request);
     }

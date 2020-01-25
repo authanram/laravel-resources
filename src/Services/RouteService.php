@@ -3,7 +3,6 @@
 namespace Authanram\Resources\Services;
 
 use Authanram\Resources\Helpers\NameResolver;
-use Authanram\Resources\Helpers\ResourceResolver;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Str;
@@ -43,11 +42,17 @@ class RouteService implements RouteServiceContract
     {
         $segment = $segments->offsetGet($prefixes->count());
 
-        return ResourceResolver::makeModelClassNameFromKebabName($segment);
+        return NameResolver::makeModelClassNameFromKebabName($segment);
     }
 
     private static function isResourceRoute(Collection $prefixes, Collection $segments): bool
     {
+        if ($segments->count() < $prefixes->count()) {
+
+            return false;
+
+        }
+
         $condition = fn(string $prefix, int $index) => $segments->offsetGet($index) !== $prefix;
 
         return $prefixes->filter($condition)->isEmpty();

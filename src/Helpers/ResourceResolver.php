@@ -12,6 +12,29 @@ use Symfony\Component\Yaml\Yaml;
 
 class ResourceResolver
 {
+    public static function makeResources(): array
+    {
+        if (config(config('authanram-resources.config_path'))) {
+
+            return config(config('authanram-resources.config_path'));
+
+        }
+
+        $files = File::allFiles(config('authanram-resources.path'));
+
+        $fn = static function (SplFileInfo $fileInfo) {
+
+            $filename = pathinfo($fileInfo->getFilename(), PATHINFO_FILENAME);
+
+            $resource = Yaml::parseFile($fileInfo->getPathname(), Yaml::PARSE_OBJECT_FOR_MAP);
+
+            return [$filename => static::applyRawPlugins($resource)];
+
+        };
+
+        return collect($files)->mapWithKeys($fn)->toArray();
+    }
+
     public static function makeResourceBySnakeName(string $snake, bool $withAssociations = true): \stdClass
     {
         $resourceName = NameResolver::makeResourceFileNameFromSnakeName($snake);
@@ -21,25 +44,6 @@ class ResourceResolver
         $resource->asscociations = new Fluent();
 
         return $withAssociations ? static::makeResourceAssociations($resource) : $resource;
-    }
-
-
-    public static function makeModelClassNameFromCamelName(string $camel): string
-    {
-        $singular = Str::singular($camel);
-
-        $kebab = Str::kebab($singular);
-
-        return static::makeModelClassNameFromKebabName($kebab);
-    }
-
-    public static function makeModelClassNameFromKebabName(string $kebab): string
-    {
-        $singular = Str::singular($kebab);
-
-        $configuration = config(config('authanram-resources.config_path'));
-
-        return data_get($configuration, "$singular.model");
     }
 
     private static function makeResourceAssociations(\stdClass $resource): \stdClass
@@ -63,12 +67,17 @@ class ResourceResolver
 
     private static function makeRawResource(string $resourceName): \stdClass
     {
-        $configuration = config(config('authanram-resources.config_path'));
+        $configuration = static::makeResources();
 
         /** @var \stdClass $resource */
-        $rawResource = data_get($configuration, $resourceName);
+        $resourceConfiguration = (array)data_get($configuration, $resourceName);
 
-        return static::applyRawPlugins($rawResource);
+        $rawResource = (array)static::applyRawPlugins((object)[
+            'model' => $resourceConfiguration['model'],
+            'resource' => $resourceName,
+        ]);
+
+        return (object)array_merge_recursive_distinct($rawResource, $resourceConfiguration);
     }
 
     private static function applyRawPlugins(\stdClass $resource): \stdClass

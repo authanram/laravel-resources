@@ -3,38 +3,33 @@
 namespace Authanram\Resources\Services;
 
 use Authanram\Resources\Contracts\ResourceServiceContract;
+use Authanram\Resources\Helpers\NameResolver;
 use Authanram\Resources\Helpers\ResourceResolver;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
 class ResourceService implements ResourceServiceContract
 {
-    public static function getModel(?Model $model, ?Request $request): Model
+    public static function getModel(Request $request): Model
     {
-        if (! $model && $request) {
+        $segments = collect($request->segments());
 
-            $segments = collect($request->segments());
+        $offset = \count(config('authanram-resources.routes.prefixes'));
 
-            $offset = \count(config('authanram-resources.routes.prefixes'));
+        $segment = $segments->offsetGet($offset);
 
-            $segment = $segments->offsetGet($offset);
+        $className = NameResolver::makeModelClassNameFromKebabName($segment);
 
-            $className = ResourceResolver::makeModelClassNameFromKebabName($segment);
-
-            return new $className;
-
-        }
-
-        return $model;
+        return new $className;
     }
 
-    public static function getResourceBySnakeName(string $snake): \stdClass
+    public static function getResourceByTableName(string $snake): \stdClass
     {
         return ResourceResolver::makeResourceBySnakeName($snake);
     }
 
     public static function getResources(): array
     {
-        return config(config('authanram-resources.config_path'));
+        return ResourceResolver::makeResources();
     }
 }

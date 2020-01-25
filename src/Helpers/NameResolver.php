@@ -22,4 +22,29 @@ class NameResolver
 
         return Str::singular($singular);
     }
+
+    public static function makeModelClassNameFromKebabName(string $kebab): string
+    {
+        $singular = Str::singular($kebab);
+
+        $configuration = ResourceResolver::makeResources();
+
+        return data_get($configuration, "$singular.model");
+    }
+
+    public static function makeModelClassNameFromCamelName(string $camel): string
+    {
+        $singular = Str::singular($camel);
+
+        $kebab = Str::kebab($singular);
+
+        return static::makeModelClassNameFromKebabName($kebab);
+    }
+
+    public static function makeTableNameFromKebabName(string $kebab): string
+    {
+        $plural = Str::plural($kebab);
+
+        return Str::slug($plural, '_');
+    }
 }
