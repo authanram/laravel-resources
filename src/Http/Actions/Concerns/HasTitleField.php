@@ -4,7 +4,7 @@ namespace Authanram\Resources\Http\Actions\Concerns;
 
 trait HasTitleField
 {
-    protected ?string $titleField;
+    protected ?string $titleField = null;
 
     public function getTitleField(): string
     {
