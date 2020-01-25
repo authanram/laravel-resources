@@ -6,7 +6,7 @@ use Authanram\Resources\Entities\FlashMessage;
 
 trait HasFlashMessage
 {
-    protected ?FlashMessage $flashMessage;
+    protected ?FlashMessage $flashMessage = null;
 
     public function getFlashMessage(): ?FlashMessage
     {

@@ -9,6 +9,8 @@ final class ResourceFieldDefaults implements RawPluginContract
 {
     public function handle(\stdClass $resource): \stdClass
     {
+        dd('rr');
+
         return $resource;
     }
 

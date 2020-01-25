@@ -35,6 +35,6 @@ class ResourceService implements ResourceServiceContract
 
     public static function getResources(): array
     {
-        return ResourceResolver::getConfiguration();
+        return config(config('authanram-resources.config_path'));
     }
 }

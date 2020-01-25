@@ -12,19 +12,11 @@ use Symfony\Component\Yaml\Yaml;
 
 class ResourceResolver
 {
-    public static function getConfiguration(string $path = null)
-    {
-        $configuration = config(config('authanram-resources.config_path')) ?? static::makeConfiguration();
-
-        return !$path ? $configuration : data_get($configuration, $path);
-    }
-
     public static function makeResourceBySnakeName(string $snake, bool $withAssociations = true): \stdClass
     {
         $resourceName = NameResolver::makeResourceFileNameFromSnakeName($snake);
 
-        /** @var \stdClass $resource */
-        $resource = static::getConfiguration($resourceName);
+        $resource = static::makeRawResource($resourceName);
 
         $resource->asscociations = new Fluent();
 
@@ -45,35 +37,9 @@ class ResourceResolver
     {
         $singular = Str::singular($kebab);
 
-        return static::getConfiguration("$singular.model");
-    }
+        $configuration = config(config('authanram-resources.config_path'));
 
-    private static function makeConfiguration(): array
-    {
-        $resources = static::makeResources();
-
-        $path = config('authanram-resources.config_path');
-
-        data_get(app(), 'config')->set($path, $resources);
-
-        return $resources;
-    }
-
-    private static function makeResources(): array
-    {
-        $files = File::allFiles(config('authanram-resources.path'));
-
-        $fn = static function (SplFileInfo $fileInfo) {
-
-            $filename = pathinfo($fileInfo->getFilename(), PATHINFO_FILENAME);
-
-            $resource = Yaml::parseFile($fileInfo->getPathname(), Yaml::PARSE_OBJECT_FOR_MAP);
-
-            return [$filename => static::applyRawPlugins($resource)];
-
-        };
-
-        return collect($files)->mapWithKeys($fn)->toArray();
+        return data_get($configuration, "$singular.model");
     }
 
     private static function makeResourceAssociations(\stdClass $resource): \stdClass
@@ -93,6 +59,16 @@ class ResourceResolver
         }
 
         return $resource;
+    }
+
+    private static function makeRawResource(string $resourceName): \stdClass
+    {
+        $configuration = config(config('authanram-resources.config_path'));
+
+        /** @var \stdClass $resource */
+        $rawResource = data_get($configuration, $resourceName);
+
+        return static::applyRawPlugins($rawResource);
     }
 
     private static function applyRawPlugins(\stdClass $resource): \stdClass
