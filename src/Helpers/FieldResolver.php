@@ -6,6 +6,6 @@ class FieldResolver
 {
     public static function makeFieldTypeFromRawColumn(\stdClass $column): void
     {
-        dd($column);
+        // dd($column);
     }
 }
