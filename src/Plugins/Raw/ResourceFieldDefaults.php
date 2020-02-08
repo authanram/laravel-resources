@@ -14,7 +14,7 @@ final class ResourceFieldDefaults implements RawPluginContract
 
         $table = NameResolver::makeTableNameFromStudlyModelBasename($basename);
 
-        dd($table);
+        // dd($table);
 
         return $resource;
     }
