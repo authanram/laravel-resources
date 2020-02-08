@@ -10,9 +10,11 @@ final class ResourceFieldDefaults implements RawPluginContract
 {
     public function handle(\stdClass $resource): \stdClass
     {
-//        $table = NameResolver::makeTableNameFromKebabName($resource->resource);
-//
-//         dd($table);
+        $basename = class_basename($resource->model);
+
+        $table = NameResolver::makeTableNameFromStudlyModelBasename($basename);
+
+        dd($table);
 
         return $resource;
     }

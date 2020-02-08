@@ -41,10 +41,10 @@ class NameResolver
         return static::makeModelClassNameFromKebabName($kebab);
     }
 
-    public static function makeTableNameFromKebabName(string $kebab): string
+    public static function makeTableNameFromStudlyModelBasename(string $basename): string
     {
-        $plural = Str::plural($kebab);
+        $plural = Str::plural($basename);
 
-        return Str::slug($plural, '_');
+        return Str::snake($plural);
     }
 }
