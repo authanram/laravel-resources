@@ -9,11 +9,7 @@ use Authanram\Resources\Plugins\Raw;
 return [
 
     'raw' => [
-        Raw\ResourceFieldDefaults::class,
-        Raw\ActionsCreateFieldDefaults::class,
-        Raw\ActionsCreateValidatorDefaults::class,
-        Raw\ActionsIndexAttributeDefaults::class,
-        Raw\ActionsIndexFieldDefaults::class,
+        Raw\ResourceDefaults::class,
     ],
 
     'actions' => [

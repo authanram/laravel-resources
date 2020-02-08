@@ -2,7 +2,6 @@
 
 namespace Authanram\Resources\Helpers;
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
 class NameResolver
@@ -39,12 +38,5 @@ class NameResolver
         $kebab = Str::kebab($singular);
 
         return static::makeModelClassNameFromKebabName($kebab);
-    }
-
-    public static function makeTableNameFromStudlyModelBasename(string $basename): string
-    {
-        $plural = Str::plural($basename);
-
-        return Str::snake($plural);
     }
 }
