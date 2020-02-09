@@ -94,7 +94,7 @@ final class SetFields implements ActionPluginContract
 
             Entities\Action::EDIT => Entities\Action::CREATE,
 
-            Entities\Action::INDEX => Entities\Action::SHOW,
+            Entities\Action::SHOW => Entities\Action::CREATE,
 
         ];
 
@@ -115,9 +115,19 @@ final class SetFields implements ActionPluginContract
 
     private function mergeFieldCollections(Collection $fields, Collection $fallbackFields): Collection
     {
-        $missingFields = $fallbackFields->diffKeys($fields);
+        $fieldAttributes = $fields->pluck('attribute');
 
-        return $fields->merge($missingFields);
+        $fallbackAttributes = $fallbackFields->pluck('attribute');
+
+        $missingFields = $fallbackAttributes->diff($fieldAttributes);
+
+        $missingFields->each(static function (string $attribute) use ($fields, $fallbackFields) {
+
+            $fields->add($fallbackFields->where('attribute', $attribute)->first());
+
+        });
+
+        return $fields;
     }
 
     private function makeRelationKeys(): array
