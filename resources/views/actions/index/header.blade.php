@@ -1,7 +1,7 @@
 @php /** @var \Authanram\Resources\Http\Actions\IndexAction $action */ @endphp
 @php /** @var \Authanram\Resources\Entities\Fields\BaseField $field */ @endphp
 
-<li class="{{ $action->theme(['resources.list', 'row', 'resources.actions.index.fields', 'row', 'header']) }}">
+<li class="{{ $action->theme(['resources.list', 'header', 'resources.actions.index.fields', 'row', 'header']) }}">
 
     @foreach ($action->getFields() as $field)
 

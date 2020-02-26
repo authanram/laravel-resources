@@ -58,9 +58,15 @@ class BaseField
 
         $this->view = empty($this->view) ? 'authanram-resources::fields.blank' : $this->view;
 
-        $this->label = static::makeLabelFromAttribute($this->attribute);
+        if ($this->field->get('label') !== false) {
+            $this->label = static::makeLabelFromAttribute($this->field->get('label', $this->attribute));
+        }
 
         $this->value = $this->makeValue();
+
+        $this->labelFalse = $this->field->get('labelFalse', '');
+
+        $this->labelTrue = $this->field->get('labelTrue', '');
     }
 
     protected function handle(): void

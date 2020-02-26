@@ -1,12 +1,9 @@
 @php /** @var \Authanram\Resources\Entities\Fields\BaseField $field */ @endphp
 @php /** @var \Authanram\Resources\Http\Actions\Action $action */ @endphp
 
-<input
-    class="{{ $action->theme('resources.form.fields.field.input') }}"
-
+<input-boolean
+    :value="{{ $field->getValue() }}"
+    label-false="{{ $field->getLabelFalse() }}"
+    label-true="{{ $field->getLabelTrue() }}"
     name="{{ $field->getAttribute() }}"
-
-    type="text"
-
-    value="{{ $field->getValue() }}"
->
+></input-boolean>

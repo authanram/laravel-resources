@@ -3,7 +3,7 @@ resources:
     index:
       fields:
         default: flex flex-1
-        header: bg-gray-100 border-none flex font-medium rounded-t-lg whitespace-no-wrap
+        header: bg-gray-100 border-none flex font-medium rounded-t-lg text-gray-500 text-xs uppercase whitespace-no-wrap
         row: hover:bg-gray-100 border-t flex items-center justify-end
         value: items-center overflow-hidden self-stretch
       invokers:
