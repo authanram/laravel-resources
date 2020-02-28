@@ -65,6 +65,7 @@ return [
             Fields\Input\Text::class,
             Fields\Input\Timestamp::class,
             //
+            \Authanram\ResourcesFieldCode\Plugins\Input::class,
             \Authanram\ResourcesFieldFroala\Plugins\Input::class,
             \Authanram\ResourcesFieldTipTap\Plugins\Input::class,
         ],
@@ -78,6 +79,7 @@ return [
             Fields\Output\Text::class,
             Fields\Output\Timestamp::class,
             //
+            \Authanram\ResourcesFieldCode\Plugins\Output::class,
             \Authanram\ResourcesFieldFroala\Plugins\Output::class,
             \Authanram\ResourcesFieldTipTap\Plugins\Output::class,
         ],
