@@ -17,6 +17,7 @@ class BaseField
     use Concerns\HasField;
     use Concerns\HasInvokers;
     use Concerns\HasLabel;
+    use Concerns\HasRelations;
     use Concerns\HasType;
     use Concerns\HasValue;
     use Concerns\HasView;

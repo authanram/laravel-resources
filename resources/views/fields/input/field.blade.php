@@ -2,6 +2,7 @@
 @php /** @var \Authanram\Resources\Http\Actions\Action $action */ @endphp
 
 @php ($typeWrapperTagNames = [
+    'belongsTo' => 'div',
     'froala' => 'div',
 ])
 

@@ -9,7 +9,7 @@ resources:
     default: hover:underline
 
   list:
-    column: pl-3 md:pl-6 lg:pl-8
+    column: pl-3 md:px-6 lg:pl-8
     header: h-12
     row: h-12 md:h-16
 
