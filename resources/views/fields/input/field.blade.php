@@ -1,7 +1,13 @@
 @php /** @var \Authanram\Resources\Entities\Fields\BaseField $field */ @endphp
 @php /** @var \Authanram\Resources\Http\Actions\Action $action */ @endphp
 
-<label class="{{ $action->theme('resources.form.fields.label.container') }}">
+@php ($typeWrapperTagNames = [
+    'froala' => 'div',
+])
+
+<{{ $typeWrapperTagNames[$field->getType()] ?? 'label' }}
+    class="{{ $action->theme('resources.form.fields.label.container') }}"
+>
 
     <span class="{{ $action->theme('resources.form.fields.label.text') }}">
 
@@ -19,4 +25,4 @@
 
     @include ('authanram-resources::fields.error')
 
-</label>
+</{{ $typeWrapperTagNames[$field->getType()] ?? 'label' }}>

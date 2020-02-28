@@ -64,7 +64,9 @@ return [
             Fields\Input\Json::class,
             Fields\Input\Text::class,
             Fields\Input\Timestamp::class,
+            //
             \Authanram\ResourcesFieldFroala\Plugins\Input::class,
+            \Authanram\ResourcesFieldTipTap\Plugins\Input::class,
         ],
 
         InteractionType::OUTPUT => [
@@ -75,7 +77,9 @@ return [
             Fields\Output\Json::class,
             Fields\Output\Text::class,
             Fields\Output\Timestamp::class,
+            //
             \Authanram\ResourcesFieldFroala\Plugins\Output::class,
+            \Authanram\ResourcesFieldTipTap\Plugins\Output::class,
         ],
     ]
 
